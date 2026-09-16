@@ -1,0 +1,81 @@
+import Link from "next/link";
+import { Phone, ArrowUpRight } from "lucide-react";
+import { Brand } from "./header";
+import { site, navigation } from "@/content/site";
+import { services } from "@/content/services";
+export function Footer() {
+  return (
+    <>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div>
+              <Brand />
+              <p>
+                Clear health coverage guidance
+                <br />
+                without the pressure.
+              </p>
+              <address>{site.address}</address>
+              <a href={site.phoneHref}>{site.phone}</a>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </div>
+            <div>
+              <h2>Find your coverage path</h2>
+              {services.map((s) => (
+                <Link key={s.slug} href={`/${s.slug}`}>
+                  {s.short}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <h2>A little more clarity</h2>
+              {navigation.map((n) => (
+                <Link key={n.href} href={n.href}>
+                  {n.label}
+                </Link>
+              ))}
+              <Link href="/licensed-states">Licensed states</Link>
+            </div>
+            <div>
+              <h2>Let’s talk</h2>
+              {site.hours.map((h) => (
+                <p key={h}>{h}</p>
+              ))}
+              <p>{site.timezone}</p>
+              <a
+                href={site.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                Schedule a conversation <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </div>
+          <p className="footer-disclaimer">{site.disclaimer}</p>
+          <div className="footer-bottom">
+            <span>
+              © {new Date().getFullYear()} {site.name}
+            </span>
+            <div>
+              <Link href="/privacy-policy">Privacy</Link>
+              <Link href="/terms">Terms</Link>
+              <Link href="/accessibility">Accessibility</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div className="mobile-actions" aria-label="Quick contact actions">
+        <a href={site.phoneHref}>
+          <Phone size={17} />
+          Call Steve
+        </a>
+        <Link href="/coverage-review" data-event="primary_cta_click">
+          Start Review
+          <ArrowUpRight size={17} />
+        </Link>
+      </div>
+    </>
+  );
+}

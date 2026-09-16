@@ -1,0 +1,43 @@
+{
+  "name": "rybacki-insurance",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "lucide-react": "^0.577.0",
+    "react-hook-form": "^7.71.2",
+    "@hookform/resolvers": "^5.2.2",
+    "zod": "^4.3.6",
+    "@vercel/analytics": "^1.6.1",
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/libre-baskerville": "^5.2.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^22.19.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.1.6",
+    "prettier": "^3.8.1",
+    "tailwindcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.1",
+    "vitest": "^4.0.18",
+    "@playwright/test": "^1.58.2",
+    "axe-core": "^4.11.1"
+  }
+}
