@@ -1,18 +1,6 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Phone,
-  MapPin,
-  Check,
-  Plus,
-  Users,
-  BriefcaseBusiness,
-  Building2,
-  ArrowRightLeft,
-  HeartHandshake,
-  MessageCircle,
-  ImageIcon,
-} from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Phone, MapPin, Check, Plus } from "lucide-react";
 import { site, testimonials, reviewDisclaimer } from "@/content/site";
 import { services } from "@/content/services";
 import { faqs, type FAQ } from "@/content/faqs";
@@ -115,49 +103,35 @@ export function PageIntro({
     </div>
   );
 }
-export function PhotoPlaceholder({ compact = false }: { compact?: boolean }) {
+export function AdvisorPortrait({ compact = false }: { compact?: boolean }) {
   return (
-    <div
-      className={`portrait-placeholder ${compact ? "compact" : ""}`}
-      role="img"
-      aria-label="Placeholder for an approved portrait of Steven Rybacki"
-    >
-      <div className="portrait-top">
-        <span>YOUR LOCAL ADVISOR</span>
-        <MapPin size={19} />
+    <figure className={`advisor-portrait ${compact ? "compact" : ""}`}>
+      <div className="advisor-image">
+        <Image
+          src={site.images.steven}
+          alt="Steven Rybacki, pictured on the agency’s current website"
+          fill
+          sizes="(max-width:600px) 85vw, (max-width:850px) 45vw, 480px"
+        />
       </div>
-      <div className="portrait-center">
-        <span className="portrait-monogram">
-          SR<span>.</span>
-        </span>
-        <div className="photo-label">
-          <ImageIcon size={15} /> Steven’s approved portrait goes here
-        </div>
-      </div>
-      <div className="portrait-caption">
-        <div>
-          <strong>Steven Rybacki</strong>
-          <span>Real conversations. Personal guidance.</span>
-        </div>
-        <span className="portrait-location">TYLER, TX</span>
-      </div>
-    </div>
+      <figcaption>
+        Steven Rybacki <span>Your Tyler-based insurance advisor</span>
+      </figcaption>
+    </figure>
   );
 }
 export function AudienceSelector() {
-  const icons = [
-    Users,
-    BriefcaseBusiness,
-    Building2,
-    ArrowRightLeft,
-    HeartHandshake,
-    MessageCircle,
+  const descriptions = [
+    "For you and the people who matter most.",
+    "For a working life you’ve made your own.",
+    "For the people building your business with you.",
+    "For a new job, a new chapter, or what comes next.",
   ];
   const cards = [
-    ...services.slice(0, 4).map((s) => ({
+    ...services.slice(0, 4).map((s, i) => ({
       title: s.short,
       href: `/${s.slug}`,
-      text: s.description.split(".")[0] + ".",
+      text: descriptions[i],
     })),
     {
       title: "Medicare referral",
@@ -171,47 +145,57 @@ export function AudienceSelector() {
     },
   ];
   return (
-    <section className="section container" id="coverage">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">A GOOD PLACE TO START</p>
-          <h2>
-            What type of coverage
-            <br className="desktop-break" /> are you looking for?
-          </h2>
+    <section className="coverage-paths" id="coverage">
+      <div className="container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">WHEREVER LIFE TAKES YOU</p>
+            <h2>
+              Coverage that starts
+              <br />
+              with your story.
+            </h2>
+          </div>
+          <p>
+            Find your starting point.
+            <br />
+            We’ll take the next step together.
+          </p>
         </div>
-        <p>
-          Your life isn’t one-size-fits-all.
-          <br />
-          Your coverage conversation shouldn’t be either.
-        </p>
-      </div>
-      <div className="audience-grid">
-        {cards.map((c, i) => {
-          const Icon = icons[i];
-          return (
-            <Link className="audience-card" key={c.title} href={c.href}>
-              <Icon size={27} strokeWidth={1.5} />
-              <h3>{c.title}</h3>
-              <p>{c.text}</p>
-              <span className="card-action">
-                {i === 5 ? "Ask Steve" : "Explore your options"}
-                <ArrowUpRight size={18} />
-              </span>
+        <div className="open-coverage-grid">
+          {cards.slice(0, 4).map((c, i) => {
+            return (
+              <Link className="open-coverage-path" key={c.title} href={c.href}>
+                <span className="path-number">0{i + 1}</span>
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+                <span className="card-action">
+                  Explore this path
+                  <ArrowUpRight size={18} />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="other-paths">
+          {cards.slice(4).map((c) => (
+            <Link key={c.title} href={c.href}>
+              {c.title}
+              <ArrowUpRight size={16} />
             </Link>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 export function Steps() {
   return (
-    <section className="section soft">
+    <section className="section soft process-section">
       <div className="container">
         <div className="center section-title">
           <p className="eyebrow">LESS GUESSWORK. MORE CLARITY.</p>
-          <h2>A conversation, not a complicated process.</h2>
+          <h2>Let’s take it one step at a time.</h2>
         </div>
         <div className="steps">
           {[
@@ -314,6 +298,13 @@ export function Testimonials() {
 export function CTASection() {
   return (
     <section className="cta-section">
+      <Image
+        src={site.images.ocean}
+        alt=""
+        fill
+        sizes="100vw"
+        className="cta-ocean-image"
+      />
       <div className="container cta-inner">
         <p className="eyebrow">YOUR NEXT CHAPTER STARTS WITH A CONVERSATION</p>
         <h2>

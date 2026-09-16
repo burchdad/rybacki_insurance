@@ -27,7 +27,7 @@ Next.js returns permanent 308 redirects. Obtain the old Squarespace sitemap and 
 
 The main headline is a shorter, human-centered alternative to the brief’s recommended wording; the audience and Texas coverage intent remain visible directly beneath it and in the title metadata. The visual identity combines navy and amber with a restrained serif, a clear coverage selector and direct call/scheduling links.
 
-The photo area is explicitly labeled, as requested when no approved repository assets exist. No fake likeness or stock stand-in is used. Business hours are transcribed from the existing site, not inferred. No unverified social profile or carrier logo appears. Licensing and legal review notes remain visible so a preview cannot be mistaken for an approved launch version.
+The initial photo placeholder was replaced during the requested coastal revision with the Steven image already on the current agency website. The ocean image is also reused from that site. No likeness was fabricated or retouched; the original files and provenance are in `public/images`. The homepage now emphasizes an ocean horizon, a personal introduction, open coverage paths and gentler section transitions, with less repeated copy. Business hours are transcribed from the existing site, not inferred. No unverified social profile or carrier logo appears. Licensing and legal review notes remain visible so a preview cannot be mistaken for an approved launch version.
 
 ## CMS migration
 

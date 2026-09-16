@@ -44,7 +44,7 @@ If your shell wrapper drops forwarded npm arguments, use `node node_modules/@pla
 - `src/app/api/leads/route.ts`: bounded POST-only intake, origin checks, validation, anti-spam, rate limits and idempotency.
 - `src/lib/lead-adapter.ts`: typed adapter contract and HTTPS webhook implementation.
 
-Server Components are the default. Only navigation, forms and optional analytics require client state. Local font files are optimized with `next/font/local`; no Google Fonts request is made by visitors. There are no unapproved portraits or stock-image substitutes. Replace the labeled portrait placeholder with an approved local image using `next/image`, explicit dimensions and responsive `sizes`.
+Server Components are the default. Only navigation, forms and optional analytics require client state. Local font files are optimized with `next/font/local`; no Google Fonts request is made by visitors. The ocean backdrop and Steven portrait are reused from the existing agency site following the requested visual revision, served locally through `next/image`. Their source URLs and rights-review note are in `public/images/README.md`. No new likeness was generated. The homepage uses open coverage paths, curved transitions and shorter copy; `src/app/coastal.css` carries that direction into the inner pages.
 
 ## Connect delivery
 

@@ -3,6 +3,10 @@ export const site = {
   name: "Rybacki Insurance Agency",
   agent: "Steven Rybacki",
   shortName: "Steve",
+  images: {
+    ocean: "/images/current-site-brand.png",
+    steven: "/images/current-site-steven.png",
+  },
   phone: "(903) 941-7282",
   phoneHref: "tel:+19039417282",
   email: "steven.rybacki@ushadvisors.com",

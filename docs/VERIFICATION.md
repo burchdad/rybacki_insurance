@@ -2,7 +2,7 @@
 
 Verified locally on 2026-09-16 using Node 20.19.4 and the locked dependency versions.
 
-The final production build used `NEXT_DIST_DIR=.next-verify` because OneDrive held a lock on an older output directory. This changes only the build-output location, not application behavior.
+The initial production build used `NEXT_DIST_DIR=.next-verify`; the coastal revision used `.next-coastal` because OneDrive held a lock on an older output directory. This changes only the build-output location, not application behavior. The coastal revision passed lint, type checking, the production build and all seven browser tests again, including the 24-page accessibility/link crawl and four-width overflow checks. Its desktop hero, portrait introduction and mobile layout were visually inspected.
 
 | Check                             | Result                                                                                                                    |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -32,7 +32,7 @@ The covered customer journey is: audience selection → coverage details → con
 - Automated accessibility checks are not a WCAG certification. Manual screen-reader, zoom and real-device testing remains on the launch checklist.
 - No live deployment, custom-domain cutover or carrier enrollment integration has been performed.
 - No Lighthouse score or field Core Web Vitals result is claimed. Performance should be measured on the final hosted build with approved images.
-- Legal pages and starter guides are labeled drafts. Portraits remain clearly identified placeholders until the owner supplies approved assets.
+- Legal pages and starter guides are labeled drafts. The coastal visual revision reuses the current agency website’s ocean and Steven images; confirm publication rights before launch.
 - Only a verified short review excerpt is included. Additional testimonials, video and social links require approved content.
 - External booking confirmation and downstream retention are integration tasks, not simulated features.
 - Generic forms discourage sensitive data and have no medical-history fields. They cannot prevent every visitor from typing sensitive text; receiving-system handling still requires review.

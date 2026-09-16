@@ -1,196 +1,146 @@
+import Image from "next/image";
 import Link from "next/link";
-import { MapPin, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import {
   ReviewCTA,
   CalendlyCTA,
-  PhotoPlaceholder,
-  TrustIndicators,
+  AdvisorPortrait,
   AudienceSelector,
   Steps,
   Testimonials,
   FAQAccordion,
   CTASection,
-  PhoneCTA,
 } from "@/components/ui";
-import { services } from "@/content/services";
+import { faqs } from "@/content/faqs";
 import { site } from "@/content/site";
 import { metadata as makeMetadata } from "@/lib/seo";
+
 export const metadata = makeMetadata(
   "Health Insurance Options for Texas Families & Businesses",
   "Compare private and Marketplace coverage with Steven Rybacki, a local Tyler advisor for families, self-employed professionals and small businesses.",
   "/",
 );
+
 export default function Home() {
   return (
-    <>
-      <section className="hero">
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow location">
-              <MapPin size={15} /> ROOTED IN TYLER. HERE FOR YOU.
-            </p>
-            <h1>
-              Health insurance.
-              <br />
-              <em>
-                With a human
-                <br className="desktop-break" /> touch.
-              </em>
-            </h1>
-            <p className="hero-audience">
-              For Texas families, self-employed professionals
-              <br className="desktop-break" /> and small businesses.
-            </p>
-            <p className="hero-description">
-              Compare private and Marketplace coverage with a local advisor who
-              explains the details clearly and helps you choose around your
-              doctors, budget and family.
-            </p>
-            <div className="actions">
-              <ReviewCTA />
-              <a
-                className="underlined-link"
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Schedule a Consultation
-                <ArrowUpRight size={16} />
-              </a>
-            </div>
-            <p className="fine hero-microcopy">
-              Takes about two minutes. No obligation.
-              <br />
-              Steve will review your information and follow up personally.
-            </p>
-            <div className="hero-phone">
-              <span>Prefer a conversation?</span>
-              <PhoneCTA />
-            </div>
-          </div>
-          <div className="hero-visual">
-            <PhotoPlaceholder />
-            <div className="personal-note">
-              <span className="note-rule" />
-              <p>
-                “No pressure.
-                <br />
-                <em>Just real options.</em>”
-              </p>
-              <span>— Steve Rybacki</span>
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <TrustIndicators />
-        </div>
-      </section>
-      <AudienceSelector />
-      <Steps />
-      <section className="section container coverage-section">
-        <div>
-          <p className="eyebrow">LOOK BEYOND THE MONTHLY PREMIUM</p>
-          <h2>
-            Understand what
+    <div className="ocean-home">
+      <section className="ocean-hero" aria-labelledby="home-heading">
+        <Image
+          src={site.images.ocean}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="ocean-image"
+        />
+        <div className="ocean-shade" />
+        <div className="container ocean-hero-content">
+          <p className="eyebrow">A LOCAL ADVISOR. A CLEARER HORIZON.</p>
+          <h1 id="home-heading">
+            Health insurance.
             <br />
-            you’re choosing.
+            <em>A little more peace of mind.</em>
+          </h1>
+          <p className="ocean-hero-description">
+            Life has enough unknowns. Let’s make your health coverage
+            <br className="desktop-break" /> easier to understand, together.
+          </p>
+          <div className="actions">
+            <ReviewCTA />
+            <a
+              href={site.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ocean-schedule"
+            >
+              Let’s have a conversation <ArrowUpRight size={17} />
+              <span className="sr-only"> (opens Calendly in a new tab)</span>
+            </a>
+          </div>
+          <p className="ocean-microcopy">
+            A few simple questions. No obligation. Personally reviewed by Steve.
+          </p>
+        </div>
+        <div className="ocean-hero-bottom container">
+          <span>
+            TYLER, TEXAS <span aria-hidden="true">—</span> HERE FOR YOU
+          </span>
+          <a href="#meet-steve">
+            A more personal approach <ArrowDown size={16} />
+          </a>
+        </div>
+        <svg
+          className="shoreline"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d="M0 35 C360 118 1050 112 1440 20 L1440 100 L0 100 Z" />
+        </svg>
+      </section>
+
+      <section className="container personal-intro" id="meet-steve">
+        <AdvisorPortrait />
+        <div className="personal-intro-copy">
+          <p className="eyebrow">MEET STEVEN RYBACKI</p>
+          <h2>
+            A real person.
+            <br />
+            <em>In your corner.</em>
           </h2>
           <p>
-            A good coverage conversation looks at the whole picture. Steve helps
-            you understand the details and the tradeoffs, so the next step feels
-            clearer.
+            You don’t need another stack of insurance information. You need
+            someone who listens, explains the details, and gives you room to
+            decide.
           </p>
-          <ul className="check-list">
-            {[
-              "Doctors and hospital networks",
-              "Benefits, exclusions and out-of-pocket costs",
-              "Eligibility, enrollment and effective dates",
-            ].map((t) => (
-              <li key={t}>
-                <Check size={18} />
-                {t}
-              </li>
-            ))}
-          </ul>
-          <Link className="text-link" href="/texas-health-insurance">
-            Explore Texas coverage guidance <ArrowUpRight size={17} />
-          </Link>
-        </div>
-        <div className="coverage-links">
-          {services.slice(0, 4).map((s, i) => (
-            <Link key={s.slug} href={`/${s.slug}`}>
-              <span>0{i + 1}</span>
-              <div>
-                <h3>{s.short}</h3>
-                <p>{s.options[0].body}</p>
-              </div>
-              <ArrowUpRight size={23} />
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section className="section reviews-section">
-        <div className="container review-grid">
-          <div>
-            <p className="eyebrow">REAL PEOPLE. REAL CONVERSATIONS.</p>
-            <h2>
-              Good guidance
-              <br />
-              starts with listening.
-            </h2>
-            <Link href="/reviews" className="text-link">
-              Read client feedback <ArrowUpRight size={17} />
-            </Link>
-          </div>
-          <Testimonials />
-        </div>
-      </section>
-      <section className="section container about-section">
-        <div className="about-panel">
-          <p className="eyebrow">A NEIGHBOR, NOT A CALL CENTER</p>
-          <span className="about-initials" aria-hidden="true">
-            Steve<span>.</span>
-          </span>
           <p>
-            Steven Rybacki
-            <br />
-            Your Tyler-based insurance advisor
+            I’m Steve, your Tyler-based advisor. Let’s talk about your life,
+            your family, and what comes next.
           </p>
+          <p className="personal-signoff">No pressure. Just real options.</p>
           <Link className="text-link" href="/about-steven-rybacki">
-            Get to know Steve <ArrowUpRight size={17} />
+            A little more about Steve <ArrowUpRight size={17} />
           </Link>
         </div>
-        <div>
-          <p className="eyebrow">PERSONAL BY DESIGN</p>
-          <h2>Your story comes first.</h2>
-          <p className="large-copy">{site.positioning}</p>
-          <p>
-            You deserve time to ask questions, space to weigh your options, and
-            a person you can reach when you need clarity.
-          </p>
-          <CalendlyCTA />
+      </section>
+
+      <AudienceSelector />
+      <Steps />
+
+      <section className="ocean-testimonial">
+        <div className="container">
+          <p className="eyebrow">SPACE TO ASK. TIME TO UNDERSTAND.</p>
+          <h2 className="sr-only">A client’s experience with Steve</h2>
+          <Testimonials />
+          <Link href="/reviews" className="text-link">
+            More about the client experience <ArrowUpRight size={17} />
+          </Link>
         </div>
       </section>
-      <section className="section soft">
-        <div className="container faq-grid">
-          <div>
-            <p className="eyebrow">LET’S CLEAR A FEW THINGS UP</p>
-            <h2>
-              Good questions.
-              <br />
-              Straightforward answers.
-            </h2>
-            <p>
-              You don’t have to know all the insurance terms to get started.
-            </p>
-            <Link className="text-link" href="/health-insurance-faq">
-              View all questions <ArrowUpRight size={17} />
-            </Link>
-          </div>
-          <FAQAccordion />
+
+      <section className="container ocean-questions">
+        <div>
+          <p className="eyebrow">WHEN YOU’RE READY TO EXPLORE</p>
+          <h2>
+            A little clarity
+            <br />
+            goes a long way.
+          </h2>
+          <Link href="/health-insurance-faq" className="text-link">
+            See all questions <ArrowUpRight size={17} />
+          </Link>
         </div>
+        <FAQAccordion items={[faqs[1], faqs[2], faqs[4], faqs[6], faqs[15]]} />
+      </section>
+
+      <section className="quiet-invitation container">
+        <p>
+          For Texas families, independent professionals, and small businesses.
+        </p>
+        <p>Private and Marketplace options. A conversation built around you.</p>
+        <CalendlyCTA />
       </section>
       <CTASection />
-    </>
+    </div>
   );
 }

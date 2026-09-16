@@ -7,6 +7,7 @@ import { agencySchema } from "@/lib/seo";
 import { site } from "@/content/site";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./coastal.css";
 const sans = localFont({
   src: [
     {

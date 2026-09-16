@@ -2,7 +2,7 @@
 
 ## Owner assets and content
 
-- [ ] Approved Steven portrait, preferably 1600×2000 or larger, with enough space for a 4:5 crop; confirm publication rights. Replace `PhotoPlaceholder` with `next/image` and descriptive alt text.
+- [ ] Confirm continued publication rights for the ocean and Steven images reused from the agency’s current site. Source URLs are recorded in `public/images/README.md`. Supply higher-resolution originals if available; the existing portrait is displayed through `next/image` with a responsive crop.
 - [ ] Optional approved Steven and Sarah image for the biography, around 1600×1200; approved downtown Tyler or office image, around 1800×1200, if desired. No additional photos are required for layout integrity.
 - [ ] Original vector logo, if the owner wants it instead of the typographic wordmark.
 - [ ] Confirm agent name, phone, email, office address, hours/time zone, response expectation and current calendar availability.

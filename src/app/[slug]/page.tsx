@@ -15,7 +15,7 @@ import {
   Steps,
   Disclaimer,
   Testimonials,
-  PhotoPlaceholder,
+  AdvisorPortrait,
   CalendlyCTA,
   LocalInformation,
   JsonLd,
@@ -217,7 +217,7 @@ export default async function ContentPage({
             description="Health coverage is personal. The guidance you get should be, too."
           />
           <section className="content-grid" style={{ paddingBottom: 80 }}>
-            <PhotoPlaceholder compact />
+            <AdvisorPortrait compact />
             <div>
               <h2>A local connection.</h2>
               <p>
