@@ -111,7 +111,7 @@ export function AdvisorPortrait({ compact = false }: { compact?: boolean }) {
           src={site.images.steven}
           alt="Steven Rybacki, pictured on the agency’s current website"
           fill
-          sizes="(max-width:600px) 85vw, (max-width:850px) 45vw, 480px"
+          sizes="(max-width:600px) 85vw, (max-width:1400px) 45vw, 640px"
         />
       </div>
       <figcaption>

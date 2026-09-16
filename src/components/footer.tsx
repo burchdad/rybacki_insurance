@@ -17,7 +17,12 @@ export function Footer() {
                 <br />
                 without the pressure.
               </p>
-              <address>{site.address}</address>
+              <address>
+                <a href={site.map} target="_blank" rel="noopener noreferrer">
+                  {site.address}
+                  <span className="sr-only"> (opens map in a new tab)</span>
+                </a>
+              </address>
               <a href={site.phoneHref}>{site.phone}</a>
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </div>

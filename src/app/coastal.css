@@ -684,3 +684,215 @@ body {
     transition: none;
   }
 }
+
+/* Fluid page framing with readable line lengths inside each section. */
+:root {
+  --muted: #435960;
+}
+.container {
+  width: calc(100% - clamp(40px, 8vw, 160px));
+  max-width: none;
+}
+.ocean-hero-content {
+  text-align: center;
+}
+.ocean-hero .actions {
+  justify-content: center;
+}
+.ocean-hero-description {
+  margin-inline: auto;
+}
+.ocean-hero h1 {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.ocean-microcopy {
+  font-size: 0.9rem;
+}
+.personal-intro {
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+}
+.personal-intro .advisor-portrait {
+  max-width: 640px;
+}
+.personal-intro-copy {
+  max-width: 660px;
+}
+.personal-intro-copy > p:not(.eyebrow) {
+  font-size: 1.0625rem;
+}
+.personal-intro-copy .text-link,
+.ocean-testimonial .text-link {
+  font-size: 1rem;
+}
+.advisor-portrait figcaption span {
+  font-size: 0.9375rem;
+}
+.eyebrow,
+.ocean-hero .eyebrow,
+.ocean-testimonial .eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+}
+.desktop-nav {
+  font-size: 0.9375rem;
+}
+.open-coverage-grid {
+  gap: clamp(24px, 4vw, 80px);
+}
+.open-coverage-path {
+  border-bottom: 2px solid #879e95;
+  transition: border-color 180ms ease;
+}
+.open-coverage-path:is(:hover, :focus-visible) {
+  border-bottom-color: #79501c;
+}
+.open-coverage-path:is(:hover, :focus-visible) .card-action {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.open-coverage-path h3 {
+  font-size: clamp(1.25rem, 1.6vw, 1.65rem);
+}
+.open-coverage-path p,
+.process-section .steps p {
+  font-size: 1.0625rem;
+}
+.open-coverage-path .card-action {
+  font-size: 1rem;
+  color: var(--ink);
+  gap: 12px;
+}
+.other-paths a {
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.process-section .section-title {
+  text-align: center;
+  margin-inline: auto;
+  max-width: none;
+}
+.process-section .steps > div {
+  border-top: 1px solid #a4b5ad;
+  padding-top: 24px;
+}
+.process-section .step-number {
+  font-size: 1.65rem;
+}
+.process-section .steps h3 {
+  font-size: 1.15rem;
+}
+.process-section .fine {
+  text-align: center;
+}
+.ocean-testimonial {
+  text-align: center;
+}
+.ocean-testimonial .container {
+  max-width: none;
+}
+.ocean-testimonial blockquote {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.ocean-testimonial figcaption {
+  justify-content: center;
+}
+.ocean-testimonial .review-block > .fine {
+  max-width: 850px;
+  margin-inline: auto;
+}
+.review-block figcaption strong {
+  font-size: 1rem;
+}
+.review-block figcaption a {
+  font-size: 0.9375rem;
+}
+.fine,
+.footer-disclaimer,
+.footer-bottom {
+  font-size: 0.875rem;
+}
+.faq-list summary {
+  font-size: 1.0625rem;
+}
+.faq-list p {
+  font-size: 1rem;
+}
+.quiet-invitation {
+  text-align: center;
+}
+.quiet-invitation p {
+  font-size: 1rem;
+}
+.cta-inner {
+  text-align: center;
+}
+.cta-section .actions {
+  justify-content: center;
+}
+.footer-grid > div > a:not(.brand),
+.footer-grid p,
+.footer-grid address {
+  font-size: 0.9375rem;
+}
+.footer-grid h2 {
+  font-size: 1rem;
+}
+.footer-grid address a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-grid > div {
+  min-width: 0;
+}
+@media (max-width: 1100px) and (min-width: 601px) {
+  .header-inner {
+    gap: 16px;
+  }
+  .agency-logo {
+    width: 215px;
+  }
+}
+@media (max-width: 600px) {
+  .personal-intro {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .ocean-hero .eyebrow {
+    font-size: 0.75rem;
+  }
+  .ocean-microcopy {
+    margin-inline: auto;
+    max-width: 310px;
+  }
+  .open-coverage-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .open-coverage-path h3 {
+    min-height: 0;
+    margin-bottom: 12px;
+  }
+  .open-coverage-path .card-action {
+    margin-top: 22px;
+  }
+  .other-paths {
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: flex-start;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .ocean-testimonial .eyebrow {
+    font-size: 0.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .open-coverage-path {
+    transition: none;
+  }
+}

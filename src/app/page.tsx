@@ -81,7 +81,7 @@ export default function Home() {
           </p>
           <p className="personal-signoff">No pressure. Just real options.</p>
           <Link className="text-link" href="/about-steven-rybacki">
-            A little more about Steve <ArrowUpRight size={17} />
+            Meet Steve <ArrowUpRight size={17} />
           </Link>
         </div>
       </section>
@@ -95,7 +95,7 @@ export default function Home() {
           <h2 className="sr-only">A client’s experience with Steve</h2>
           <Testimonials />
           <Link href="/reviews" className="text-link">
-            More about the client experience <ArrowUpRight size={17} />
+            Read client stories <ArrowUpRight size={17} />
           </Link>
         </div>
       </section>
