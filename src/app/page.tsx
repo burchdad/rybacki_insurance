@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   ReviewCTA,
   AdvisorPortrait,
@@ -50,14 +50,6 @@ export default function Home() {
           <p className="ocean-microcopy">
             A few simple questions. No obligation. Personally reviewed by Steve.
           </p>
-        </div>
-        <div className="ocean-hero-bottom container">
-          <span>
-            TYLER, TEXAS <span aria-hidden="true">—</span> HERE FOR YOU
-          </span>
-          <a href="#meet-steve">
-            A more personal approach <ArrowDown size={16} />
-          </a>
         </div>
         <svg
           className="shoreline"

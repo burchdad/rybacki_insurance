@@ -28,15 +28,6 @@ export function Header() {
   };
   return (
     <>
-      <div className="topbar">
-        <div className="container">
-          <span>Personal guidance. Right here in Tyler, Texas.</span>
-          <a href={site.phoneHref}>
-            <Phone size={13} />
-            {site.phone}
-          </a>
-        </div>
-      </div>
       <header className="header">
         <div className="container header-inner">
           <Brand />
@@ -135,6 +126,9 @@ export function Header() {
             <Link className="button" href="/coverage-review">
               Start My Coverage Review
             </Link>
+            <a href={site.phoneHref}>
+              <Phone size={16} aria-hidden="true" /> Call Steve: {site.phone}
+            </a>
           </nav>
         </div>
       </dialog>
