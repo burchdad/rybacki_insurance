@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Phone, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { MobileActions } from "./mobile-actions";
 import { Brand } from "./header";
 import { site, navigation } from "@/content/site";
 import { services } from "@/content/services";
@@ -66,16 +67,7 @@ export function Footer() {
           </div>
         </div>
       </footer>
-      <div className="mobile-actions" aria-label="Quick contact actions">
-        <a href={site.phoneHref}>
-          <Phone size={17} />
-          Call Steve
-        </a>
-        <Link href="/coverage-review" data-event="primary_cta_click">
-          Start Review
-          <ArrowUpRight size={17} />
-        </Link>
-      </div>
+      <MobileActions />
     </>
   );
 }

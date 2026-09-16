@@ -18,6 +18,29 @@ const routes = [
   ...services.map((s) => `/${s.slug}`),
   ...articles.map((a) => `/resources/${a.slug}`),
 ];
+test("mobile contact actions follow the hero and stay off forms", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const actions = page.locator(".mobile-actions");
+  await expect(actions).toBeHidden();
+  await expect(page.locator(".header-cta")).toBeHidden();
+  await page.locator(".ocean-hero").evaluate((hero) => {
+    window.scrollTo({
+      top: hero.getBoundingClientRect().bottom + window.scrollY + 1,
+      behavior: "instant",
+    });
+  });
+  await expect(actions).toBeVisible();
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await expect(actions).toBeHidden();
+  for (const route of ["/coverage-review", "/contact", "/thank-you"]) {
+    await page.goto(route);
+    await expect(actions).toBeHidden();
+  }
+});
+
 test("all routes, headings, metadata, accessibility and internal links", async ({
   page,
   request,

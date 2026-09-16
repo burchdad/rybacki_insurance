@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef } from "react";
 import { Menu, X, ArrowUpRight, Phone, ChevronDown } from "lucide-react";
 import { navigation, site } from "@/content/site";
@@ -7,12 +8,14 @@ import { services } from "@/content/services";
 export function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Rybacki Insurance Agency home">
-      <span className="brand-mark" aria-hidden="true">
-        R<span>.</span>
-      </span>
-      <span>
-        RYBACKI<small>INSURANCE AGENCY</small>
-      </span>
+      <Image
+        src="/images/agency-logo.png"
+        alt=""
+        width={1640}
+        height={516}
+        sizes="(max-width: 600px) 215px, 250px"
+        className="agency-logo"
+      />
     </Link>
   );
 }

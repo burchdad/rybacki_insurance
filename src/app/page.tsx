@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import {
   ReviewCTA,
-  CalendlyCTA,
   AdvisorPortrait,
   AudienceSelector,
   Steps,
@@ -39,7 +38,7 @@ export default function Home() {
           <h1 id="home-heading">
             Health insurance.
             <br />
-            <em>A little more peace of mind.</em>
+            <em>With you in mind.</em>
           </h1>
           <p className="ocean-hero-description">
             Life has enough unknowns. Let’s make your health coverage
@@ -47,15 +46,6 @@ export default function Home() {
           </p>
           <div className="actions">
             <ReviewCTA />
-            <a
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ocean-schedule"
-            >
-              Let’s have a conversation <ArrowUpRight size={17} />
-              <span className="sr-only"> (opens Calendly in a new tab)</span>
-            </a>
           </div>
           <p className="ocean-microcopy">
             A few simple questions. No obligation. Personally reviewed by Steve.
@@ -138,7 +128,6 @@ export default function Home() {
           For Texas families, independent professionals, and small businesses.
         </p>
         <p>Private and Marketplace options. A conversation built around you.</p>
-        <CalendlyCTA />
       </section>
       <CTASection />
     </div>

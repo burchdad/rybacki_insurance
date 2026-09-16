@@ -1,5 +1,7 @@
 # Existing agency imagery
 
+- `agency-logo.png`: original transparent anchor and wordmark (1640 × 516), retrieved from https://images.squarespace-cdn.com/content/v1/63c8549e76ef1367eec7889d/1a44d692-1df0-4368-8815-a95d79113e3c/RYBACKI+INSURANCE+AGENCY+%285%29.png on 2026-09-16. Reused without pixel edits; footer uses a CSS dark silhouette. The small browser favicon uses a simplified anchor for legibility.
+
 These two images were retrieved from the current agency website on 2026-09-16, following the owner's request to bring its oceanic atmosphere and personal identity into the replacement site. They are served locally through Next.js image optimization. No new likeness of Steven was generated and neither original image was retouched.
 
 - `current-site-brand.png`: ocean image from https://images.squarespace-cdn.com/content/v1/63c8549e76ef1367eec7889d/66530443-71d5-4e85-a9fe-b500cb3aa352/ChatGPT+Image+Jul+8%2C+2026%2C+09_46_42+PM.png (1500w rendition).

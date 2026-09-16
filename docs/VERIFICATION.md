@@ -2,6 +2,8 @@
 
 Verified locally on 2026-09-16 using Node 20.19.4 and the locked dependency versions.
 
+The anchor-brand refinement passed ESLint and a production build using `.next-refined` (including TypeScript checks). All seven existing browser tests passed. The new eighth test also passed on a focused rerun after correcting its scroll position to move fully beyond the hero; it checks that mobile contact actions appear after the hero, disappear on return to the top, and remain hidden on contact/review/thank-you pages. Desktop and phone screenshots were visually inspected, including the original logo, two-line mobile heading and softened portrait crop.
+
 The initial production build used `NEXT_DIST_DIR=.next-verify`; the coastal revision used `.next-coastal` because OneDrive held a lock on an older output directory. This changes only the build-output location, not application behavior. The coastal revision passed lint, type checking, the production build and all seven browser tests again, including the 24-page accessibility/link crawl and four-width overflow checks. Its desktop hero, portrait introduction and mobile layout were visually inspected.
 
 | Check                             | Result                                                                                                                    |
