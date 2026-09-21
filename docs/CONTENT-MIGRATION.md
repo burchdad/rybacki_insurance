@@ -32,3 +32,7 @@ The initial photo placeholder was replaced during the requested coastal revision
 ## CMS migration
 
 Retain the current types while replacing array imports with a server-side loader. Preserve slugs and published/updated dates, validate incoming data with a schema, and review every statement before publication. Render rich text using an escaped/allowlisted renderer. Keep secrets and lead integration outside content fields.
+
+## September 17 owner-feedback revision
+
+Retained the layout while changing the site palette to black, white, gray and gold, including grayscale ocean backgrounds. Restored the current homepage headline, audience introduction, Steven biography paragraph, coverage section heading and introduction, and Start My Quote label from the public homepage. Other draft supporting sections and interior-page copy have not been represented as verbatim original content and still need a full content comparison. The coverage page now uses the original public Jotform rather than recreating its questions. See INTEGRATIONS.md for the remaining account-level automation verification. This revision supersedes the earlier navy/coastal color and shortened-headline decisions above.

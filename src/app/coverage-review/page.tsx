@@ -1,27 +1,34 @@
-import { CoverageReviewForm } from "@/components/lead-forms";
 import { Breadcrumbs, PageIntro } from "@/components/ui";
+import { site } from "@/content/site";
 import { metadata as makeMetadata } from "@/lib/seo";
 export const metadata = makeMetadata(
   "Start Your Coverage Review",
-  "Share a few basic details to start a no-obligation health coverage conversation with Steven Rybacki. No medical history required.",
+  "Complete Steven Rybacki’s health insurance questionnaire, one question at a time, to prepare for your consultation.",
   "/coverage-review",
 );
-export default async function CoverageReview({
-  searchParams,
-}: {
-  searchParams: Promise<{ need?: string }>;
-}) {
-  const { need } = await searchParams;
+export default function CoverageReview() {
   return (
     <div className="container">
       <Breadcrumbs items={[{ label: "Coverage review" }]} />
-      <div className="form-wrap">
+      <div className="intake-wrap">
         <PageIntro
-          eyebrow="A CLEARER PATH STARTS HERE"
-          title="Let’s find your next step."
-          description="About two minutes. A few basic details. A real person on the other end."
+          eyebrow="RYBACKI INSURANCE AGENCY"
+          title="Let's Find Your Options"
+          description="No pressure. Just real options."
         />
-        <CoverageReviewForm initialNeed={need} />
+        <iframe
+          className="intake-frame"
+          src={site.intakeUrl}
+          title="Rybacki Insurance health insurance questionnaire"
+          allow="fullscreen"
+        />
+        <p className="intake-fallback">
+          Having trouble viewing the questions?{" "}
+          <a href={site.intakeUrl} target="_blank" rel="noopener noreferrer">
+            Open the questionnaire in a new tab
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

@@ -1,30 +1,30 @@
-/* A quieter coastal identity, shared by the homepage and inner pages. */
+/* Black, white, gray and gold, shared by the homepage and inner pages. */
 :root {
-  --navy: #102b35;
-  --ink: #17343d;
-  --muted: #53666c;
-  --amber: #e2c58c;
-  --cream: #f8f6f0;
-  --soft: #eef2ef;
-  --line: #d4ddda;
+  --navy: #171717;
+  --ink: #242424;
+  --muted: #626262;
+  --amber: #c9ab67;
+  --cream: #ffffff;
+  --soft: #f3f3f3;
+  --line: #d8d8d8;
 }
 body {
   background: var(--cream);
 }
 .topbar {
-  background: #0b222c;
-  color: #d8e1df;
+  background: #111111;
+  color: #dedede;
 }
 .header {
-  background: #0b222c;
+  background: #111111;
   border-bottom: 1px solid #ffffff14;
-  color: #f6f4ee;
+  color: #ffffff;
 }
 .header-inner {
   min-height: 92px;
 }
 .header .brand {
-  color: #f6f4ee;
+  color: #ffffff;
 }
 .agency-logo {
   display: block;
@@ -63,7 +63,7 @@ body {
   padding: 13px 21px;
 }
 .button-outline {
-  border-color: #899b9a;
+  border-color: #999999;
 }
 .section {
   padding-block: 120px;
@@ -91,8 +91,8 @@ body {
   background: transparent;
 }
 .form-panel {
-  background: #fffdf8;
-  border-color: #e6e5dc;
+  background: #ffffff;
+  border-color: #dddddd;
   border-radius: 22px;
   box-shadow: none;
 }
@@ -109,7 +109,7 @@ body {
   padding-bottom: 65px;
 }
 .footer {
-  background: #f0f0e9;
+  background: #f2f2f2;
   padding-top: 85px;
 }
 
@@ -122,7 +122,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 92px 0 120px;
-  color: #fffdf7;
+  color: #ffffff;
   overflow: hidden;
 }
 .ocean-image {
@@ -135,9 +135,9 @@ body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(5, 21, 30, 0.44),
-    rgba(4, 21, 30, 0.48) 45%,
-    rgba(4, 21, 30, 0.55)
+    rgba(0, 0, 0, 0.44),
+    rgba(0, 0, 0, 0.48) 45%,
+    rgba(0, 0, 0, 0.55)
   );
   z-index: -2;
 }
@@ -147,25 +147,25 @@ body {
   z-index: 1;
 }
 .ocean-hero .eyebrow {
-  color: #fff1d8;
+  color: #e5cf9e;
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   margin-bottom: 30px;
 }
 .ocean-hero h1 {
-  color: #fffdf7;
+  color: #ffffff;
   font-size: clamp(3rem, 5.4vw, 5.2rem);
   line-height: 1.23;
   letter-spacing: -0.055em;
 }
 .ocean-hero h1 em {
   display: inline-block;
-  color: #f2dfb9;
+  color: #e5cf9e;
   font-size: 0.82em;
   margin-top: 8px;
 }
 .ocean-hero-description {
-  color: #fffdf7;
+  color: #ffffff;
   font-size: 1.08rem;
   line-height: 1.9;
   margin: 33px auto;
@@ -180,16 +180,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #fffdf7;
+  color: #ffffff;
   font-size: 0.88rem;
   padding: 16px 0;
   border-bottom: 1px solid #ffffff75;
 }
 .ocean-schedule:hover {
-  color: #f2dfb9;
+  color: #e5cf9e;
 }
 .ocean-microcopy {
-  color: #f0eee5;
+  color: #eeeeee;
   font-size: 0.78rem;
   margin-top: 23px;
 }
@@ -213,7 +213,7 @@ body {
   gap: 15px;
   align-items: center;
   padding: 12px 0;
-  color: #fffdf7;
+  color: #ffffff;
   font-size: 0.78rem;
 }
 .shoreline {
@@ -273,7 +273,7 @@ body {
   line-height: 1.28;
 }
 .personal-intro-copy h2 em {
-  color: #53736c;
+  color: #795f2d;
 }
 .personal-intro-copy > p:not(.eyebrow) {
   font-size: 1rem;
@@ -289,14 +289,14 @@ body {
 }
 .personal-intro-copy .text-link {
   margin-top: 12px;
-  border-bottom: 1px solid #91a29c;
+  border-bottom: 1px solid #a3a3a3;
   font-size: 0.85rem;
 }
 
 /* Open paths replace enclosed cards. */
 .coverage-paths {
   padding: 90px 0 80px;
-  background: #eef2ef;
+  background: #f3f3f3;
   border-radius: 50% 50% 0 0 / 35px 35px 0 0;
 }
 .coverage-paths .section-heading {
@@ -316,14 +316,14 @@ body {
   flex-direction: column;
   align-items: start;
   padding: 0 0 25px;
-  border-bottom: 1px solid #bacbc4;
+  border-bottom: 1px solid #cccccc;
 }
 .open-coverage-path:hover {
   color: var(--ink);
 }
 .path-number {
   font-family: var(--font-display), Georgia, serif;
-  color: #465d52;
+  color: #725b2e;
   font-size: 0.9rem;
   margin-bottom: 29px;
 }
@@ -377,7 +377,7 @@ body {
 }
 .process-section .step-number {
   font-size: 1.3rem;
-  color: #465d52;
+  color: #725b2e;
   margin-bottom: 26px;
 }
 .process-section .steps h3 {
@@ -393,7 +393,7 @@ body {
 
 /* A single client voice with room around it. */
 .ocean-testimonial {
-  background: #e8eeea;
+  background: #efefef;
   padding: 110px 0 105px;
   text-align: center;
   border-radius: 50% 50% 50% 50% / 25px 25px 25px 25px;
@@ -404,7 +404,7 @@ body {
 .ocean-testimonial .quote-mark {
   font-size: 5rem;
   margin-top: 40px;
-  color: #687c70;
+  color: #795f2d;
 }
 .ocean-testimonial blockquote {
   font-size: clamp(1.6rem, 2.6vw, 2.3rem);
@@ -465,16 +465,16 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(5, 24, 33, 0.84);
+  background: rgba(0, 0, 0, 0.84);
 }
 .cta-inner {
   position: relative;
 }
 .cta-section .eyebrow {
-  color: #e0e7df;
+  color: #e5e5e5;
 }
 .cta-section .button-outline {
-  border-color: #b2c2c1;
+  border-color: #bbbbbb;
 }
 
 @media (max-width: 1000px) {
@@ -521,7 +521,7 @@ body {
     object-position: 40% center;
   }
   .ocean-shade {
-    background: rgba(4, 21, 30, 0.56);
+    background: rgba(0, 0, 0, 0.56);
   }
   .ocean-hero .eyebrow {
     font-size: 0.63rem;
@@ -895,4 +895,36 @@ body {
   .open-coverage-path {
     transition: none;
   }
+}
+
+/* Preserve the layout with neutral photography and restrained gold accents. */
+.ocean-image,
+.cta-ocean-image {
+  filter: grayscale(1);
+}
+.intake-wrap {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+.intake-wrap .page-intro {
+  padding-block: 25px 35px;
+}
+.intake-frame {
+  display: block;
+  width: 100%;
+  height: 780px;
+  height: min(850px, 90svh);
+  min-height: 600px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--soft);
+}
+.intake-fallback {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.intake-fallback a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

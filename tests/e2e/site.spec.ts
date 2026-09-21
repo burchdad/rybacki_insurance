@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import path from "node:path";
 import { services } from "../../src/content/services";
 import { articles } from "../../src/content/articles";
@@ -164,83 +164,31 @@ test("mobile dialog traps focus, closes with Escape and restores focus", async (
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(trigger).toBeFocused();
 });
-async function fillReview(page: Page) {
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByLabel("First name").fill("Test");
-  await page.getByLabel("Last name").fill("Visitor");
-  await page
-    .getByLabel("Email", { exact: false })
-    .first()
-    .fill("test@example.com");
-  await page.getByLabel("Phone", { exact: false }).first().fill("9035550100");
-  await page.getByLabel("ZIP code").fill("75702");
-  await page.getByLabel("Desired coverage start date").fill("2026-10-01");
-}
-test("review validates, preserves values on failure and confirms a successful response", async ({
+test("coverage review preserves the existing Jotform and offers a direct fallback", async ({
   page,
 }) => {
-  await page.goto("/coverage-review");
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await expect(page.getByText("Please enter your name.").first()).toBeVisible();
-  await page.getByRole("button", { name: "Back", exact: true }).click();
-  await fillReview(page);
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await expect(page.getByLabel(/Optional: I agree/)).not.toBeChecked();
-  await page
-    .getByRole("button", { name: "Request my coverage review" })
-    .click();
-  await expect(
-    page.getByText("Please agree to contact permission"),
-  ).toBeVisible();
-  await page.getByLabel(/^I agree that/).check();
-  let payload: Record<string, unknown> = {};
-  await page.route("**/api/leads", (route) => {
-    payload = route.request().postDataJSON();
-    return route.fulfill({
-      status: 503,
-      json: { error: "Provider unavailable. Please retry." },
-    });
-  });
-  await page
-    .getByRole("button", { name: "Request my coverage review" })
-    .click();
-  await expect(
-    page.getByText("Provider unavailable. Please retry."),
-  ).toBeVisible();
-  expect(page.url()).not.toContain("test@example");
-  await expect(
-    page.getByText("test@example.com", { exact: true }),
-  ).toBeVisible();
-  expect(payload.smsConsent).toBe(false);
-  await page.unroute("**/api/leads");
-  await page.route("**/api/leads", (route) =>
-    route.fulfill({ status: 200, json: { ok: true, status: "delivered" } }),
+  await page.route("https://form.jotform.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<html lang='en'><title>Intake fixture</title><body><main>Existing provider form</main></body></html>",
+    }),
   );
-  await page
-    .getByRole("button", { name: "Request my coverage review" })
-    .click();
-  await expect(page).toHaveURL(/thank-you/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Thank you",
+  const response = await page.goto("/coverage-review?need=Small%20business");
+  expect(response?.headers()["content-security-policy"]).toContain(
+    "frame-src https://form.jotform.com",
   );
-});
-test("small business and Medicare paths", async ({ page }) => {
-  await page.goto("/coverage-review?need=Small%20business");
-  await fillReview(page);
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await expect(page.getByText("Enter the business name.")).toBeVisible();
-  await page.getByLabel("Business name").fill("Example business");
-  await page.getByLabel("Approximate eligible employees").fill("5");
-  await page
-    .getByLabel("Current group coverage status")
-    .selectOption("Not currently offered");
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  const frame = page.getByTitle(
+    "Rybacki Insurance health insurance questionnaire",
+  );
+  await expect(frame).toBeVisible();
+  await expect(frame).toHaveAttribute(
+    "src",
+    "https://form.jotform.com/261974651459066",
+  );
   await expect(
-    page.getByRole("heading", { name: "Ready for a personal conversation?" }),
-  ).toBeVisible();
-  await page.goto("/coverage-review?need=Medicare%20referral");
-  await expect(page.getByText("Steve can refer you")).toBeVisible();
+    page.getByRole("link", { name: "Open the questionnaire in a new tab" }),
+  ).toHaveAttribute("href", "https://form.jotform.com/261974651459066");
+  await expect(page.locator("form")).toHaveCount(0);
 });
 test("contact callback requires a phone and displays real unconfigured-provider failure", async ({
   page,

@@ -16,7 +16,7 @@ export function JsonLd({ data }: { data: unknown }) {
   );
 }
 export function ReviewCTA({
-  label = "Start My Coverage Review",
+  label = "Start My Quote",
   href = "/coverage-review",
 }: {
   label?: string;
@@ -150,16 +150,12 @@ export function AudienceSelector() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">WHEREVER LIFE TAKES YOU</p>
-            <h2>
-              Coverage that starts
-              <br />
-              with your story.
-            </h2>
+            <h2>Coverage Built Around YOUR Life.</h2>
           </div>
           <p>
-            Find your starting point.
-            <br />
-            We’ll take the next step together.
+            Whether you&apos;re self-employed, raising a family, or growing a
+            business, I&apos;ll help you compare the options that fit your needs and
+            your budget.
           </p>
         </div>
         <div className="open-coverage-grid">
@@ -201,7 +197,7 @@ export function Steps() {
           {[
             {
               title: "Tell Steve what you need.",
-              text: "Share a few basic details about your situation. No medical history. No obligation.",
+              text: "Complete the questionnaire, one question at a time, to prepare for your consultation.",
             },
             {
               title: "Compare available options.",

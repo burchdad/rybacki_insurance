@@ -30,3 +30,9 @@ The verified link from the existing agency homepage opens Calendly in a new tab.
 Optional analytics require both the build-time flag and affirmative visitor consent. Disable immediately through the footer preference. Sensitive fields are never event properties. Set a retention policy in the receiving CRM; the website itself keeps no inquiry database. `LEAD_RETENTION_DAYS` documents the target and must be wired to the CRM’s retention job by its administrator.
 
 Set up provider delivery alerts, a named owner for unanswered inquiries and monitoring of aggregate endpoint error counts. Do not capture request bodies in error reporting or reverse-proxy logs. No claim of HIPAA compliance is made.
+
+## Existing Jotform intake — September 17 revision
+
+The current homepage publicly links https://form.jotform.com/261974651459066 (RIA Health Insurance Intake Form v1.0). `/coverage-review` now embeds that exact form, with a direct-link fallback. Its card layout, wording, conditional questions and submission handling remain owned by Jotform. No question values are copied into our API, query strings or analytics. Legacy `need` links still open the same form; no unverified Jotform field mapping is attempted. The previous local CoverageReviewForm remains unused; ContactForm still uses the existing lead adapter and requires its own configured provider.
+
+The surrounding site palette is controlled locally; the embedded form theme must be changed in its Jotform account. Public inspection cannot verify email recipients, reminder rules, CRM integrations or delivery. Before launch, inspect those settings with account access and run an owner-authorized end-to-end submission. No live submission was made during this revision.

@@ -34,22 +34,21 @@ export default function Home() {
         />
         <div className="ocean-shade" />
         <div className="container ocean-hero-content">
-          <p className="eyebrow">A LOCAL ADVISOR. A CLEARER HORIZON.</p>
+          <p className="eyebrow">RYBACKI INSURANCE AGENCY</p>
           <h1 id="home-heading">
-            Health insurance.
+            Paying Too Much for
             <br />
-            <em>With you in mind.</em>
+            <em>Health Insurance?</em>
           </h1>
           <p className="ocean-hero-description">
-            Life has enough unknowns. Let’s make your health coverage
-            <br className="desktop-break" /> easier to understand, together.
+            Helping self-employed individuals, families, small business owners,
+            and those losing employer coverage compare private health insurance
+            and Marketplace plans throughout Texas.
           </p>
           <div className="actions">
             <ReviewCTA />
           </div>
-          <p className="ocean-microcopy">
-            A few simple questions. No obligation. Personally reviewed by Steve.
-          </p>
+          <p className="ocean-microcopy">No pressure. Just real options.</p>
         </div>
         <svg
           className="shoreline"
@@ -65,20 +64,8 @@ export default function Home() {
         <AdvisorPortrait />
         <div className="personal-intro-copy">
           <p className="eyebrow">MEET STEVEN RYBACKI</p>
-          <h2>
-            A real person.
-            <br />
-            <em>In your corner.</em>
-          </h2>
-          <p>
-            You don’t need another stack of insurance information. You need
-            someone who listens, explains the details, and gives you room to
-            decide.
-          </p>
-          <p>
-            I’m Steve, your Tyler-based advisor. Let’s talk about your life,
-            your family, and what comes next.
-          </p>
+          <h2>Steven Rybacki</h2>
+          <p>{site.positioning}</p>
           <p className="personal-signoff">No pressure. Just real options.</p>
           <Link className="text-link" href="/about-steven-rybacki">
             Meet Steve <ArrowUpRight size={17} />

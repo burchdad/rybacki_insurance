@@ -3,6 +3,7 @@ export const site = {
   name: "Rybacki Insurance Agency",
   agent: "Steven Rybacki",
   shortName: "Steve",
+  intakeUrl: "https://form.jotform.com/261974651459066",
   images: {
     ocean: "/images/current-site-brand.png",
     steven: "/images/current-site-steven.png",
@@ -30,7 +31,7 @@ export const site = {
   response:
     "Steve will follow up personally during office hours. If your coverage deadline is close, please call.",
   positioning:
-    "Every client has a different story. My job is to help you understand your options, compare plans honestly, and choose coverage that fits your doctors, budget and family.",
+    "Every client has a different story. My job is to help you understand your options, compare plans honestly, and choose coverage that fits your doctors, your budget, and your family.",
   disclaimer:
     "Plan availability, eligibility, networks, benefits and pricing vary by plan, location and individual circumstances. This website provides general information, not legal, tax or medical advice. Review the policy documents before enrolling.",
   licensingDisclaimer:

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 :root {
-  --navy: #132e40;
-  --ink: #173346;
-  --muted: #52646e;
-  --amber: #efbd65;
+  --navy: #171717;
+  --ink: #242424;
+  --muted: #626262;
+  --amber: #c9ab67;
   --gold: #79501c;
-  --cream: #faf8f3;
-  --line: #dce2e3;
-  --soft: #f1f5f4;
+  --cream: #ffffff;
+  --line: #dddddd;
+  --soft: #f3f3f3;
   --white: #fff;
   --font-sans: var(--font-body), Arial, sans-serif;
 }
@@ -92,7 +92,7 @@ svg {
   color: var(--navy);
 }
 :focus-visible {
-  outline: 3px solid #287790;
+  outline: 3px solid #8a6b2e;
   outline-offset: 5px;
   border-radius: 3px;
 }
@@ -125,7 +125,7 @@ button:disabled {
   font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.6;
-  color: #4e6067;
+  color: #626262;
   margin-bottom: 20px;
 }
 .fine {
@@ -173,17 +173,17 @@ button:disabled {
     transform 0.18s;
 }
 .button:hover {
-  background: #f6ca7f;
+  background: #dbc18a;
   color: var(--navy);
   transform: translateY(-2px);
 }
 .button-outline {
   background: transparent;
-  border-color: #9caaad;
+  border-color: #aaaaaa;
   color: var(--navy);
 }
 .button-outline:hover {
-  background: #e9efed;
+  background: #eeeeee;
 }
 .actions {
   display: flex;
@@ -193,7 +193,7 @@ button:disabled {
 }
 .topbar {
   background: var(--navy);
-  color: #e4eaed;
+  color: #eeeeee;
   font-size: 0.75rem;
   padding: 9px 0;
 }
@@ -240,7 +240,7 @@ button:disabled {
   font-size: 2.65rem;
   letter-spacing: -0.15em;
   padding: 0 12px 2px 0;
-  border-right: 1px solid #c5cccd;
+  border-right: 1px solid #cccccc;
   margin-right: 1px;
 }
 .brand-mark > span {
@@ -278,7 +278,7 @@ button:disabled {
   background: white;
   border: 1px solid var(--line);
   padding: 12px;
-  box-shadow: 0 15px 35px #132e401a;
+  box-shadow: 0 15px 35px #1717171a;
   border-radius: 6px;
 }
 .nav-dropdown a {
@@ -321,7 +321,7 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #536966;
+  color: #626262;
 }
 .hero h1 {
   color: var(--navy);
@@ -330,7 +330,7 @@ button:disabled {
   letter-spacing: -0.058em;
 }
 .hero h1 em {
-  color: #476a6a;
+  color: #626262;
   font-weight: 400;
 }
 .hero-audience {
@@ -377,7 +377,7 @@ button:disabled {
 .portrait-placeholder {
   height: 510px;
   border-radius: 100px 8px 8px 8px;
-  background: linear-gradient(150deg, #284d58, #183746 70%);
+  background: linear-gradient(150deg, #333333, #191919 70%);
   color: #f4f5ed;
   position: relative;
   overflow: hidden;
@@ -385,7 +385,7 @@ button:disabled {
   flex-direction: column;
   justify-content: space-between;
   padding: 38px 32px 29px;
-  border: 1px solid #254953;
+  border: 1px solid #444444;
 }
 .portrait-placeholder::before,
 .portrait-placeholder::after {
@@ -411,7 +411,7 @@ button:disabled {
   padding-left: 30px;
   font-size: 0.63rem;
   letter-spacing: 0.16em;
-  color: #d3e1dd;
+  color: #dddddd;
 }
 .portrait-center {
   position: relative;
@@ -422,7 +422,7 @@ button:disabled {
   font-family: var(--font-display), Georgia, serif;
   font-size: 8rem;
   letter-spacing: -0.09em;
-  color: #dbe7df;
+  color: #eeeeee;
 }
 .portrait-monogram > span {
   color: var(--amber);
@@ -433,7 +433,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   font-size: 0.69rem;
-  color: #d9e4df;
+  color: #dddddd;
   margin-top: 6px;
 }
 .portrait-caption {
@@ -453,7 +453,7 @@ button:disabled {
   display: block;
   font-size: 0.69rem;
   margin-top: 4px;
-  color: #d4e2df;
+  color: #dddddd;
 }
 .portrait-caption .portrait-location {
   font-size: 0.59rem;
@@ -466,7 +466,7 @@ button:disabled {
   background: #fff;
   width: 225px;
   padding: 22px 27px;
-  box-shadow: 0 14px 38px #132e4012;
+  box-shadow: 0 14px 38px #17171712;
   border-radius: 3px;
   transform: rotate(-3deg);
 }
@@ -491,7 +491,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #dfe3dd;
+  border-top: 1px solid #dddddd;
   padding: 25px 0;
   margin-top: 67px;
   gap: 15px;
@@ -501,10 +501,10 @@ button:disabled {
   align-items: center;
   gap: 10px;
   font-size: 0.8rem;
-  color: #4c6065;
+  color: #626262;
 }
 .trust-indicators svg {
-  color: #567a70;
+  color: #626262;
 }
 .section-heading {
   display: flex;
@@ -541,7 +541,7 @@ button:disabled {
   color: var(--ink);
 }
 .audience-card > svg {
-  color: #496866;
+  color: #626262;
   margin-bottom: 24px;
 }
 .audience-card h3 {
@@ -611,7 +611,7 @@ button:disabled {
   font-size: 0.89rem;
 }
 .check-list svg {
-  color: #567a70;
+  color: #626262;
   margin-top: 3px;
 }
 .coverage-links > a {
@@ -626,7 +626,7 @@ button:disabled {
 }
 .coverage-links > a > span {
   font-size: 0.8rem;
-  color: #52646e;
+  color: #626262;
   align-self: start;
   margin-top: 4px;
 }
@@ -747,10 +747,10 @@ button:disabled {
   margin-bottom: 17px;
 }
 .faq-list {
-  border-top: 1px solid #ccd6d5;
+  border-top: 1px solid #cccccc;
 }
 .faq-list details {
-  border-bottom: 1px solid #ccd6d5;
+  border-bottom: 1px solid #cccccc;
 }
 .faq-list summary {
   display: flex;
@@ -787,13 +787,13 @@ button:disabled {
   overflow: hidden;
 }
 .cta-section .eyebrow {
-  color: #c2d4d2;
+  color: #dddddd;
 }
 .cta-section h2 {
   font-size: clamp(2rem, 3.5vw, 3rem);
 }
 .cta-section p:not(.eyebrow) {
-  color: #c5d4d7;
+  color: #dddddd;
   margin: 23px 0 28px;
 }
 .cta-section .actions {
@@ -801,14 +801,14 @@ button:disabled {
 }
 .cta-section .button-outline {
   color: white;
-  border-color: #71868e;
+  border-color: #999999;
 }
 .cta-section .button-outline:hover {
-  background: #2a4556;
+  background: #333333;
 }
 .footer {
   padding: 65px 0 25px;
-  background: #f8f9f7;
+  background: #f7f7f7;
 }
 .footer-grid {
   display: grid;
@@ -889,7 +889,7 @@ button:disabled {
   color: var(--ink);
 }
 .mobile-dialog::backdrop {
-  background: #10293499;
+  background: #17171799;
 }
 .mobile-dialog-inner {
   padding: 25px;
@@ -1140,10 +1140,10 @@ button:disabled {
 }
 .form-steps li {
   flex: 1;
-  border-bottom: 3px solid #d6dfde;
+  border-bottom: 3px solid #dddddd;
   padding: 0 0 12px;
   font-size: 0.8rem;
-  color: #586d70;
+  color: #626262;
 }
 .form-steps li[aria-current="step"] {
   border-color: var(--gold);
@@ -1180,7 +1180,7 @@ button:disabled {
 .field select,
 .field textarea {
   width: 100%;
-  border: 1px solid #aabbbd;
+  border: 1px solid #aaaaaa;
   border-radius: 4px;
   padding: 11px 12px;
   min-height: 46px;
@@ -1224,8 +1224,8 @@ button:disabled {
   font-size: 0.9rem;
 }
 .form-choice:has(input:checked) {
-  border-color: #426e69;
-  background: #eef4f0;
+  border-color: #795f2d;
+  background: #f6f2e9;
 }
 .form-choice input,
 .checkbox-row input {
@@ -1314,8 +1314,8 @@ button:disabled {
 .success-icon {
   width: 60px;
   height: 60px;
-  background: #e5f1e9;
-  color: #365e4a;
+  background: #eeeeee;
+  color: #444444;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1809,9 +1809,9 @@ button:disabled {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: white;
-    border-top: 1px solid #c7d3d5;
+    border-top: 1px solid #cccccc;
     padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -4px 18px #132e400d;
+    box-shadow: 0 -4px 18px #1717170d;
   }
   .mobile-actions > a {
     display: flex;

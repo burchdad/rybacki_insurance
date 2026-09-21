@@ -8,7 +8,7 @@ export default function Image() {
   return new ImageResponse(
     <div
       style={{
-        background: "#132e40",
+        background: "#171717",
         color: "#fff",
         width: "100%",
         height: "100%",
@@ -22,16 +22,16 @@ export default function Image() {
         style={{
           fontSize: 25,
           letterSpacing: 6,
-          color: "#efbd65",
+          color: "#c9ab67",
           marginBottom: 40,
         }}
       >
         {site.name.toUpperCase()}
       </div>
       <div style={{ fontSize: 70, lineHeight: 1.1, maxWidth: 950 }}>
-        Health insurance. With a human touch.
+        Paying Too Much for Health Insurance?
       </div>
-      <div style={{ fontSize: 27, color: "#cbdedb", marginTop: 40 }}>
+      <div style={{ fontSize: 27, color: "#dddddd", marginTop: 40 }}>
         {`Personal guidance · Tyler, Texas · ${site.phone}`}
       </div>
     </div>,
