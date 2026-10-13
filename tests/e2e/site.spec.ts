@@ -331,3 +331,32 @@ test("migration redirects retain query strings and the Tyler destination is subs
   );
   expect(await page.locator("article section").count()).toBe(6);
 });
+
+test("a confirmed general contact submission does not bypass coverage intake", async ({
+  page,
+}) => {
+  let localRequests = 0;
+  await page.route("**/api/leads", async (route) => {
+    localRequests += 1;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ ok: true, status: "delivered" }),
+    });
+  });
+  await page.goto("/contact");
+  await page.getByLabel("Name", { exact: false }).first().fill("Test Visitor");
+  await page
+    .getByLabel("Email", { exact: false })
+    .first()
+    .fill("test@example.com");
+  await page.getByLabel("Your question").fill("Fictional routing test only");
+  await page.getByLabel(/^I agree that/).check();
+  await page.getByRole("button", { name: "Send my question" }).click();
+  await expect(page).toHaveURL(/\/contact-thank-you$/);
+  expect(localRequests).toBe(1);
+  await expect(page.locator('a[href*="calendly.com"]')).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: /Start My Coverage Review/ }).first(),
+  ).toHaveAttribute("href", "/coverage-review");
+});

@@ -22,6 +22,14 @@ This branch is for review. Do not merge it into the production branch or switch 
 - Browser regression tests cover 1440, 768, 390 and 320px layouts, keyboard navigation, serious/critical axe findings, CTA consistency, client help, iframe/fallback preservation, contact errors and legacy routes. CI captures screenshots and test reports.
 - Browser tests use a static JotForm fixture. They do not validate or submit the real questionnaire or prove any email was delivered.
 
+## Dependency review
+
+The inherited lockfile contained Next.js 16.3.5, sharp 0.35.4 and source-map-js 1.2.1. This branch updates to Next.js/eslint-config-next 16.3.8, sharp 0.35.5 and source-map-js 1.2.2. The production dependency audit reports zero known vulnerabilities on October 13. This is not a general security certification.
+
+The full development-tool audit still flags the unpatched braces/micromatch/fast-glob chain under eslint-config-next. The registry's suggested major downgrade is not applied. These are build/lint dependencies; restrict them to trusted repository input and revisit when the upstream fix is available.
+
+The critical Next.js ImageResponse advisory requires attacker-controlled SVG input. This site's Open Graph image uses static content; no matching exploitation path was identified. The patch is retained as preventive maintenance. Official advisories: https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j and https://github.com/advisories/GHSA-wq5f-xc86-pv6w.
+
 ## Remaining launch decisions and account-level checks
 
 1. Confirm the exact circular anchor-and-rope logo asset, agent/contact/address/hours details, licensed states and final service list. The current original agency image asset is preserved, not replaced with an invented mark.

@@ -124,7 +124,7 @@ export function AudienceSelector() {
   const descriptions = [
     "For you and the people who matter most.",
     "For a working life you’ve made your own.",
-    "For the people building your business with you.",
+    "For the coverage decisions that come with running a business.",
     "For a new job, a new chapter, or what comes next.",
   ];
   const cards = [
