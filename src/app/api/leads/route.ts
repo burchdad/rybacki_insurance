@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       return reply(
         {
           error:
-            "We could not verify this request. Please try again or call Steve.",
+            "We could not verify this request. Please try again or call us.",
         },
         400,
       );
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       : "local-or-untrusted";
     if (!(await rateLimit(ip)))
       return reply(
-        { error: "Too many attempts. Please wait 15 minutes or call Steve." },
+        { error: "Too many attempts. Please wait 15 minutes or call us." },
         429,
       );
     const adapter = getLeadAdapter();

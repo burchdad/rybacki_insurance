@@ -11,6 +11,53 @@ export type Article = {
 const draftDate = "2026-09-16";
 export const articles: Article[] = [
   {
+    slug: "choosing-health-insurance-tyler",
+    title: "Choosing Health Insurance in Tyler, TX",
+    category: "Tyler Coverage Guidance",
+    description:
+      "A local starting point for comparing health coverage around your household, doctors and budget.",
+    sections: [
+      {
+        title: "Start with your situation",
+        body: "If you work for yourself, pay the full cost of family coverage or are leaving an employer plan, start with what is changing. We are based in Tyler and help you organize the questions that matter for your next coverage decision. No pressure. Just real options.",
+      },
+      {
+        title: "Compare public and private options",
+        body: "Marketplace plans come from private insurers through a public enrollment platform. Plans sold outside the Marketplace can differ in benefits, eligibility and exclusions. Ask for the actual policy documents. A label alone does not tell you whether a plan fits your needs, and no option guarantees approval or savings.",
+      },
+      {
+        title: "Look beyond the monthly premium",
+        body: "Compare the cost of keeping a plan with the cost of using it. Look at deductibles, copays, coinsurance, covered services and any policy limits. Check the exact plan network for the Tyler-area doctors and hospitals you want to use; an insurer’s name does not guarantee that every provider participates.",
+      },
+      {
+        title: "Consider the whole household",
+        body: "An employer plan may work for one family member while adding a spouse or children is expensive. Bring the available plan information and ask about alternatives for the household. Access to job-based coverage can affect Marketplace financial assistance, so eligibility needs its own review.",
+      },
+      {
+        title: "Know who will help you",
+        body: "Steven Rybacki is affiliated with USHEALTH Advisors. We will confirm which services we can provide directly. If another licensed professional may be appropriate, we will discuss a referral before sharing your information. Most appointments take place by phone and screen sharing, with office visits available by appointment.",
+      },
+      {
+        title: "Begin with the coverage questionnaire",
+        body: "Complete our existing intake, then use the thank-you page to book your coverage review. The questionnaire includes relevant health questions. Submitting it does not enroll you in insurance or establish coverage. Existing clients can call or email us for service help without starting a new-prospect questionnaire.",
+      },
+    ],
+    sources: [
+      {
+        label: "HealthCare.gov: Marketplace overview",
+        href: "https://www.healthcare.gov/quick-guide/one-page-guide-to-the-marketplace/",
+      },
+      {
+        label: "HealthCare.gov: Compare plans",
+        href: "https://www.healthcare.gov/choose-a-plan/",
+      },
+      {
+        label: "HealthCare.gov: Job-based coverage",
+        href: "https://www.healthcare.gov/have-job-based-coverage/",
+      },
+    ],
+  },
+  {
     slug: "private-vs-marketplace-texas",
     title: "Private Health Insurance vs. Marketplace Plans in Texas",
     category: "Texas Coverage Guidance",
@@ -133,7 +180,7 @@ export const articles: Article[] = [
       },
       {
         title: "Use an appropriate intake process",
-        body: "Health information belongs in a secure application or intake process designated for that purpose. This website’s initial forms only begin a conversation; do not include diagnoses or prescription details.",
+        body: "Health information belongs in a secure application or intake process designated for that purpose. Our detailed JotForm intake includes relevant health questions. Do not include diagnoses or prescription details in the separate general contact form.",
       },
     ],
     sources: [
@@ -195,4 +242,14 @@ export const articles: Article[] = [
       },
     ],
   },
-].map((article) => ({ ...article, published: draftDate, updated: draftDate }));
+].map((article) => ({
+  ...article,
+  published:
+    article.slug === "choosing-health-insurance-tyler"
+      ? "2026-10-13"
+      : draftDate,
+  updated:
+    article.slug === "choosing-health-insurance-tyler"
+      ? "2026-10-13"
+      : draftDate,
+}));

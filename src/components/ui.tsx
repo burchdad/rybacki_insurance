@@ -16,7 +16,7 @@ export function JsonLd({ data }: { data: unknown }) {
   );
 }
 export function ReviewCTA({
-  label = "Start My Quote",
+  label = "Start My Coverage Review",
   href = "/coverage-review",
 }: {
   label?: string;
@@ -37,7 +37,7 @@ export function CalendlyCTA() {
       rel="noopener noreferrer"
       className="button button-outline"
     >
-      Schedule a Consultation <ArrowUpRight size={17} />
+      Book My Coverage Review <ArrowUpRight size={17} />
       <span className="sr-only"> (opens Calendly in a new tab)</span>
     </a>
   );
@@ -134,9 +134,9 @@ export function AudienceSelector() {
       text: descriptions[i],
     })),
     {
-      title: "Medicare referral",
-      href: "/coverage-review?need=Medicare%20referral",
-      text: "Connect with an appropriately licensed Medicare specialist.",
+      title: "Existing Client Help",
+      href: "/contact#existing-client-help",
+      text: "Contact us about cards, billing or your existing policy.",
     },
     {
       title: "Just have a question?",
@@ -154,8 +154,8 @@ export function AudienceSelector() {
           </div>
           <p>
             Whether you&apos;re self-employed, raising a family, or growing a
-            business, I&apos;ll help you compare the options that fit your needs and
-            your budget.
+            business, we&apos;ll help you compare the options that fit your
+            needs and your budget.
           </p>
         </div>
         <div className="open-coverage-grid">
@@ -196,16 +196,16 @@ export function Steps() {
         <div className="steps">
           {[
             {
-              title: "Tell Steve what you need.",
+              title: "Tell us what you need.",
               text: "Complete the questionnaire, one question at a time, to prepare for your consultation.",
             },
             {
-              title: "Compare available options.",
-              text: "Talk through networks, benefits and costs with someone who takes time to explain.",
+              title: "Book your coverage review.",
+              text: "After submitting the questionnaire, use the scheduling link on the thank-you page to choose a time.",
             },
             {
-              title: "Choose coverage confidently.",
-              text: "Understand the next steps and decide what works for you, at your own pace.",
+              title: "Compare public and private options.",
+              text: "We will talk through available options, networks, benefits and costs so you can decide at your own pace.",
             },
           ].map((s, i) => (
             <div key={s.title}>
@@ -216,8 +216,8 @@ export function Steps() {
           ))}
         </div>
         <p className="fine center">
-          Submitting the initial form starts a conversation. It does not enroll
-          you in a plan.
+          Completing the intake starts a conversation. It does not enroll you in
+          insurance or establish coverage.
         </p>
       </div>
     </section>
@@ -311,7 +311,7 @@ export function CTASection() {
         <p>No pressure. Just real options.</p>
         <div className="actions">
           <ReviewCTA />
-          <CalendlyCTA />
+          <PhoneCTA />
         </div>
       </div>
     </section>
@@ -346,6 +346,7 @@ export function LocalInformation() {
       <PhoneCTA />
       <a href={`mailto:${site.email}`}>{site.email}</a>
       <div>
+        <p>{site.appointments}</p>
         <strong>Office hours · {site.timezone}</strong>
         {site.hours.map((h) => (
           <p key={h}>{h}</p>
@@ -372,7 +373,7 @@ export function TrustIndicators() {
     <div className="trust-indicators">
       {[
         "Tyler-based, personal service",
-        "Private & Marketplace options",
+        "Compare public and private options",
         "No-obligation conversation",
       ].map((t) => (
         <span key={t}>

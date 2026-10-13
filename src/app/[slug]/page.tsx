@@ -36,7 +36,7 @@ const otherPages: Record<string, { title: string; description: string }> = {
   "health-insurance-faq": {
     title: "Health Insurance FAQ",
     description:
-      "Straightforward answers about health plans, networks, eligibility, enrollment and working with Steve.",
+      "Straightforward answers about health plans, networks, eligibility, enrollment and working with our agency.",
   },
   "licensed-states": {
     title: "Licensed States",
@@ -44,9 +44,14 @@ const otherPages: Record<string, { title: string; description: string }> = {
       "Review the agency’s published 23-state service list and confirm current licensing and product availability.",
   },
   contact: {
-    title: "Contact Steve",
+    title: "Contact Us and Existing Client Help",
     description:
-      "Call, email or schedule a conversation with Rybacki Insurance Agency in downtown Tyler, Texas.",
+      "Call or email Rybacki Insurance Agency in Tyler, Texas for general questions and existing-client assistance.",
+  },
+  "contact-thank-you": {
+    title: "Contact Inquiry Next Steps",
+    description:
+      "Next steps after sending a general contact question to our agency.",
   },
   "thank-you": {
     title: "Inquiry Confirmation",
@@ -82,7 +87,7 @@ export async function generateMetadata({
       service?.description || page.description,
       `/${slug}`,
     ),
-    ...(slug === "thank-you"
+    ...(["thank-you", "contact-thank-you"].includes(slug)
       ? { robots: { index: false, follow: false } }
       : {}),
   };
@@ -142,6 +147,16 @@ export default async function ContentPage({
             ))}
           </div>
         </section>
+        {slug === "texas-health-insurance" && (
+          <div className="container local-guide-link">
+            <Link
+              className="text-link"
+              href="/resources/choosing-health-insurance-tyler"
+            >
+              Read our guide to choosing health insurance in Tyler, TX
+            </Link>
+          </div>
+        )}
         <Steps />
         <section className="section container faq-grid">
           <div>
@@ -226,14 +241,14 @@ export default async function ContentPage({
                 parents of two sons.
               </p>
               <p>
-                Steve’s approach begins with listening. He helps individuals,
+                Our approach begins with listening. We help individuals,
                 families and business owners understand available coverage, ask
                 useful questions and make an informed choice without pressure.
               </p>
               <h3>Every conversation starts with you.</h3>
               <p>{site.positioning}</p>
               <div className="actions" style={{ marginTop: 25 }}>
-                <CalendlyCTA />
+                <ReviewCTA />
                 <PhoneCTA />
               </div>
               <Link className="text-link" href="/licensed-states">
@@ -263,7 +278,7 @@ export default async function ContentPage({
           <PageIntro
             eyebrow="IN THEIR OWN WORDS"
             title="Guidance that makes room for you."
-            description="The best place to begin is with a conversation. Here is one client’s perspective on working with Steve."
+            description="The best place to begin is with a conversation. Here is one client’s perspective on working with our agency."
           />
           <div className="prose">
             <Testimonials />
@@ -275,11 +290,11 @@ export default async function ContentPage({
             <p className="eyebrow">MORE CLIENT STORIES</p>
             <h2>Prefer to hear a story firsthand?</h2>
             <p>
-              Ask Steve about the process and what to expect. Approved video
+              Ask us about the process and what to expect. Approved video
               testimonials will be added here when available.
             </p>
             <Link className="text-link" href="/contact">
-              Talk with Steve
+              Talk with us
             </Link>
           </div>
         </section>
@@ -293,7 +308,7 @@ export default async function ContentPage({
           <PageIntro
             eyebrow="INSURANCE, IN PLAIN LANGUAGE"
             title="Good questions deserve clear answers."
-            description="Start here, then bring your own questions to a personal conversation with Steve."
+            description="Start here, then bring your own questions to a personal conversation with us."
           />
           <div className="prose">
             <FAQAccordion items={faqs} schema />
@@ -311,7 +326,7 @@ export default async function ContentPage({
           <PageIntro
             eyebrow="BASED IN TYLER. CONNECTED BEYOND TEXAS."
             title="Start local. Check your state."
-            description="The agency’s current published list includes the following 23 states. Please confirm current availability with Steve."
+            description="The agency’s current published list includes the following 23 states. Please confirm current availability with us."
           />
           <div className="draft-notice">
             Owner confirmation of this licensing list is required before launch.
@@ -337,13 +352,13 @@ export default async function ContentPage({
         <PageIntro
           eyebrow="NO PRESSURE. JUST A CONVERSATION."
           title="Let’s talk about what’s next."
-          description="A coverage question, a change in your life, or simply a second look. Steve is here to help you understand your options."
+          description="A coverage question, a change in your life, or simply a second look. We are here to help you understand your options."
         />
         <div className="contact-grid">
           <div>
-            <h2>Reach Steve directly.</h2>
+            <h2>Reach us directly.</h2>
             <LocalInformation />
-            <CalendlyCTA />
+            <ReviewCTA />
             <p className="fine" style={{ marginTop: 25 }}>
               {site.response}
             </p>
@@ -355,6 +370,50 @@ export default async function ContentPage({
           </div>
           <ContactForm />
         </div>
+        <section
+          className="existing-client-help"
+          id="existing-client-help"
+          aria-labelledby="client-help-heading"
+        >
+          <h2 id="client-help-heading">Existing Client Help</h2>
+          <p>
+            Need help with insurance cards, billing, policy information or
+            another service question? Call or email us directly. You do not need
+            to complete a new-prospect questionnaire.
+          </p>
+          <div className="actions">
+            <PhoneCTA />
+            <a className="text-link" href={`mailto:${site.email}`}>
+              Email us for client help
+            </a>
+          </div>
+          <p className="fine">
+            Please keep medical details, Social Security numbers, payment
+            information and policy documents out of a general email or contact
+            question. Ask us how to provide any information needed for your
+            request.
+          </p>
+        </section>
+      </div>
+    );
+  if (slug === "contact-thank-you")
+    return (
+      <div className="container thank-you">
+        <Breadcrumbs items={[{ label: "Contact inquiry next steps" }]} />
+        <PageIntro
+          eyebrow="YOUR CONTACT QUESTION"
+          title="Thank you for reaching out."
+          description="If your contact form confirmed a successful submission, we will review your question and follow up."
+        />
+        <p>{site.response}</p>
+        <p>
+          For a new coverage review, please complete the detailed questionnaire
+          before scheduling.
+        </p>
+        <div className="actions">
+          <ReviewCTA />
+          <PhoneCTA />
+        </div>
       </div>
     );
   return (
@@ -365,10 +424,13 @@ export default async function ContentPage({
       </div>
       <PageIntro
         eyebrow="YOUR NEXT STEPS"
-        title="Thank you for reaching out."
-        description="If you arrived here after a successful submission, your inquiry has been received. Steve will review your request and follow up personally."
+        title="Your next step: book your coverage review."
+        description="After submitting your coverage questionnaire, choose a time for us to review your options together. If you have not completed the intake yet, please start there."
       />
-      <p>{site.response}</p>
+      <p>{site.appointments}</p>
+      <Link className="text-link" href="/coverage-review">
+        Complete the coverage questionnaire
+      </Link>
       <div className="actions">
         <CalendlyCTA />
         <PhoneCTA />
@@ -379,7 +441,7 @@ export default async function ContentPage({
           "Think about your preferred start date and general budget.",
           "Have your current plan documents handy, if applicable.",
           "Make a private list of the doctors and facilities you want to check.",
-          "Save detailed health information for an appropriate secure intake process.",
+          "Follow the detailed intake instructions for health information; keep it out of general contact messages.",
         ].map((t) => (
           <li key={t}>
             <Check size={18} />
@@ -388,8 +450,9 @@ export default async function ContentPage({
         ))}
       </ul>
       <p className="limitation">
-        Your inquiry does not enroll you in insurance or confirm an appointment.
-        Calendly will provide a separate confirmation if you book a time.
+        Completing your intake does not enroll you in insurance, establish
+        coverage or confirm an appointment. Calendly will provide a separate
+        confirmation if you book a time.
       </p>
     </div>
   );

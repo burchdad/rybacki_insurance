@@ -2,6 +2,16 @@ import { test, expect } from "@playwright/test";
 import path from "node:path";
 import { services } from "../../src/content/services";
 import { articles } from "../../src/content/articles";
+// Site-shell regression tests intentionally do not submit to or depend on JotForm.
+// Its family/spouse branches, saved records and notifications need account-level QA.
+test.beforeEach(async ({ page }) => {
+  await page.route("https://form.jotform.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<html lang='en'><title>Intake fixture</title><body><main>Existing provider form fixture</main></body></html>",
+    }),
+  );
+});
 const routes = [
   "/",
   "/about-steven-rybacki",
@@ -15,6 +25,7 @@ const routes = [
   "/terms",
   "/accessibility",
   "/thank-you",
+  "/contact-thank-you",
   ...services.map((s) => `/${s.slug}`),
   ...articles.map((a) => `/resources/${a.slug}`),
 ];
@@ -100,12 +111,15 @@ test("legacy redirects, sitemap, robots and 404", async ({ request, page }) => {
     "/meet-the-team": "/about-steven-rybacki",
     "/faqs-4": "/health-insurance-faq",
     "/blog-1-1": "/resources",
+    "/lets-find-your-options": "/coverage-review",
+    "/blog-1-1/choosing-the-best-health-insurance-with-rybacki-insurance-agency-in-tyler-tx":
+      "/resources/choosing-health-insurance-tyler",
     "/new-page": "/licensed-states",
     "/texas": "/texas-health-insurance",
   };
   for (const [from, to] of Object.entries(redirects)) {
     const res = await request.get(from, { maxRedirects: 0 });
-    expect(res.status()).toBe(308);
+    expect(res.status()).toBe(301);
     expect(res.headers().location).toBe(to);
   }
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
@@ -216,4 +230,104 @@ test("contact callback requires a phone and displays real unconfigured-provider 
   await expect(page.getByLabel("Your question")).toHaveValue(
     "Fictional test question",
   );
+});
+
+test("prospect pages keep intake first and use the approved review CTA", async ({
+  page,
+}) => {
+  for (const route of routes.filter((route) => route !== "/thank-you")) {
+    await page.goto(route);
+    await expect(page.locator('a[href*="calendly.com"]'), route).toHaveCount(0);
+    const buttons = page.locator(
+      'a.button[href^="/coverage-review"], .mobile-actions a[href="/coverage-review"]',
+    );
+    for (const button of await buttons.all()) {
+      await expect(button, route).toHaveText(/Start My Coverage Review/);
+    }
+    await expect(
+      page
+        .locator('a[href="mailto:Steven@RybackiInsuranceAgency.com"]')
+        .first(),
+    ).toBeAttached();
+    await expect(page.locator('a[href*="ushadvisors.com"]')).toHaveCount(0);
+  }
+  await page.goto("/thank-you");
+  await expect(page.locator('a[href*="calendly.com"]')).toHaveCount(1);
+  await expect(
+    page.getByRole("link", { name: /Book My Coverage Review/ }),
+  ).toHaveAttribute(
+    "href",
+    "https://calendly.com/steven-rybacki/health-insurance-coverage-review",
+  );
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    /noindex/,
+  );
+});
+
+test("client help uses direct contact without a new intake", async ({
+  page,
+}) => {
+  await page.goto("/contact#existing-client-help");
+  const help = page.locator("#existing-client-help");
+  await expect(
+    help.getByRole("heading", { name: "Existing Client Help" }),
+  ).toBeVisible();
+  await expect(help.locator('a[href="tel:+19039417282"]')).toBeVisible();
+  await expect(
+    help.locator('a[href="mailto:Steven@RybackiInsuranceAgency.com"]'),
+  ).toBeVisible();
+  await expect(help.locator("form, iframe")).toHaveCount(0);
+  await expect(
+    page
+      .getByText(/Most appointments take place by phone and screen sharing/)
+      .first(),
+  ).toBeVisible();
+});
+
+test("intake notices distinguish questionnaires from enrollment and general contact", async ({
+  page,
+}) => {
+  await page.route("https://form.jotform.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<html lang='en'><title>Intake fixture</title><body><main>Existing provider form</main></body></html>",
+    }),
+  );
+  await page.goto("/coverage-review");
+  await expect(page.locator(".intake-notice").first()).toContainText(
+    "does not enroll you in insurance or establish coverage",
+  );
+  await expect(page.locator(".intake-notice").first()).toContainText(
+    "relevant health questions",
+  );
+  await page.goto("/contact-thank-you");
+  await expect(page.locator('a[href*="calendly.com"]')).toHaveCount(0);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    /noindex/,
+  );
+  await page.goto("/reviews");
+  await expect(page.locator("blockquote")).toHaveText(
+    "Steve was great to work with. He was very knowledgeable and patient with all of my questions.",
+  );
+});
+
+test("migration redirects retain query strings and the Tyler destination is substantive", async ({
+  request,
+  page,
+}) => {
+  const response = await request.get(
+    "/lets-find-your-options?utm_source=legacy",
+    { maxRedirects: 0 },
+  );
+  expect(response.status()).toBe(301);
+  expect(response.headers().location).toBe(
+    "/coverage-review?utm_source=legacy",
+  );
+  await page.goto("/resources/choosing-health-insurance-tyler");
+  await expect(page.locator("article h1")).toHaveText(
+    "Choosing Health Insurance in Tyler, TX",
+  );
+  expect(await page.locator("article section").count()).toBe(6);
 });

@@ -9,12 +9,15 @@ const config: NextConfig = {
       "/meet-the-team": "/about-steven-rybacki",
       "/faqs-4": "/health-insurance-faq",
       "/blog-1-1": "/resources",
+      "/blog-1-1/choosing-the-best-health-insurance-with-rybacki-insurance-agency-in-tyler-tx":
+        "/resources/choosing-health-insurance-tyler",
+      "/lets-find-your-options": "/coverage-review",
       "/new-page": "/licensed-states",
       "/texas": "/texas-health-insurance",
     }).map(([source, destination]) => ({
       source,
       destination,
-      permanent: true,
+      statusCode: 301,
     }));
   },
   async headers() {

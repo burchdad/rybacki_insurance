@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ReviewCTA } from "./ui";
 import { MobileActions } from "./mobile-actions";
 import { Brand } from "./header";
 import { site, navigation } from "@/content/site";
@@ -49,16 +49,12 @@ export function Footer() {
                 <p key={h}>{h}</p>
               ))}
               <p>{site.timezone}</p>
-              <a
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link"
-              >
-                Schedule a conversation <ArrowUpRight size={16} />
-              </a>
+              <p>{site.appointments}</p>
+              <ReviewCTA />
+              <Link href="/contact">Contact us</Link>
             </div>
           </div>
+          <p className="footer-disclaimer">{site.affiliation}</p>
           <p className="footer-disclaimer">{site.disclaimer}</p>
           <div className="footer-bottom">
             <span>

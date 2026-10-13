@@ -79,34 +79,34 @@ export const services: Service[] = [
   },
   {
     slug: "small-business-health-insurance",
-    title: "Take care of your team. Keep sight of your business.",
-    short: "Small business",
-    eyebrow: "Health insurance for businesses with 2–50 employees",
+    title: "Your business is personal. So is your health coverage.",
+    short: "Small business owners",
+    eyebrow: "Health coverage for small business owners",
     description:
-      "Make sense of employee health benefits with a personal review of your team, budget and goals. Steve helps you ask the right questions before committing.",
+      "Running a business brings enough decisions. We help you start with the coverage needs of you and your household and understand which options are available.",
     need: "Small business",
     problems: [
-      "Understanding participation and contribution requirements",
-      "Comparing renewal costs and funding responsibilities",
-      "Explaining benefits clearly to employees",
+      "Finding coverage for yourself and your family",
+      "Comparing premiums with the cost of using a plan",
+      "Planning ahead when work or household coverage changes",
     ],
     options: [
       {
-        title: "Group health coverage",
-        body: "Explore available insured plans, network choices and employer contribution requirements.",
+        title: "Your own coverage",
+        body: "Start with your current plan, household priorities and the options available where you live.",
       },
       {
-        title: "Level-funded arrangements",
-        body: "Where available and appropriate, review underwriting, funding risk, contract terms and renewal considerations.",
+        title: "A household comparison",
+        body: "Consider available individual coverage alongside any coverage through a spouse’s employer.",
       },
       {
-        title: "Benefits planning",
-        body: "Consider the employee experience, administration and the total cost of the arrangement.",
+        title: "Questions about your team",
+        body: "Tell us what you need. We will confirm whether we can help directly before discussing a particular service or any referral.",
       },
     ],
-    fit: "Owners evaluating benefits for approximately 2–50 employees, whether introducing coverage or reviewing an existing arrangement.",
+    fit: "Small business owners, sole proprietors and independent professionals reviewing coverage for themselves and their households.",
     limitation:
-      "Employee count alone does not establish eligibility. Participation, underwriting, state rules and plan terms may apply. Level-funded arrangements are not suitable for every employer.",
+      "Available services and products must be confirmed with us. This page does not promise group insurance, level-funded arrangements, eligibility or coverage approval.",
     faqIndices: [9, 0, 10],
   },
   {
@@ -161,11 +161,11 @@ export const services: Service[] = [
       },
       {
         title: "Your priorities come first",
-        body: "Discuss doctors, budget and timing privately with Steve, then compare the details.",
+        body: "Discuss doctors, budget and timing privately with us, then compare the details.",
       },
       {
         title: "An accessible local office",
-        body: "Connect by phone or schedule a conversation with the agency based in downtown Tyler.",
+        body: "Most appointments take place by phone and screen sharing. Office visits in Tyler are available by appointment.",
       },
     ],
     fit: "Texas residents seeking individual, family, self-employed or small-business coverage guidance.",

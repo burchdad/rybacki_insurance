@@ -10,7 +10,7 @@ export const site = {
   },
   phone: "(903) 941-7282",
   phoneHref: "tel:+19039417282",
-  email: "steven.rybacki@ushadvisors.com",
+  email: "Steven@RybackiInsuranceAgency.com",
   address: "110 N. College Ave., Suite 801, Tyler, TX 75702",
   addressParts: {
     streetAddress: "110 N. College Ave., Suite 801",
@@ -28,16 +28,20 @@ export const site = {
     "https://calendly.com/steven-rybacki/health-insurance-coverage-review",
   map: "https://www.google.com/maps/search/?api=1&query=110+N+College+Ave+Suite+801+Tyler+TX+75702",
   socials: [] as { label: string; href: string }[], // Add only verified agency profiles.
+  appointments:
+    "Most appointments take place by phone and screen sharing. Office visits are available by appointment.",
+  affiliation:
+    "Our agency is led by Steven Rybacki, an insurance agent contracted with USHEALTH Advisors. Through that affiliation, available products include coverage underwritten by Freedom Life Insurance Company of America. If another licensed professional may be helpful, we will ask your permission before sharing relevant information for a referral.",
   response:
-    "Steve will follow up personally during office hours. If your coverage deadline is close, please call.",
+    "We will follow up during office hours. If your coverage deadline is close, please call.",
   positioning:
-    "Every client has a different story. My job is to help you understand your options, compare plans honestly, and choose coverage that fits your doctors, your budget, and your family.",
+    "Every client has a different story. Our job is to help you understand your options, compare plans honestly, and choose coverage that fits your doctors, your budget, and your family.",
   disclaimer:
     "Plan availability, eligibility, networks, benefits and pricing vary by plan, location and individual circumstances. This website provides general information, not legal, tax or medical advice. Review the policy documents before enrolling.",
   licensingDisclaimer:
     "Licensing and product availability may change. Contact Rybacki Insurance Agency to confirm availability in your state.",
   sensitiveNotice:
-    "Do not enter medical diagnoses, prescription details, Social Security numbers, payment information or other highly sensitive information. Detailed health questions belong in a separate secure intake process.",
+    "Do not enter medical diagnoses, prescription details, Social Security numbers, payment information or other highly sensitive information. The detailed coverage questionnaire is a separate intake process; follow its instructions for health questions.",
   consent:
     "I agree that Rybacki Insurance Agency may contact me about my inquiry using the contact information I provide. This does not enroll me in insurance or require a purchase.",
   smsConsent:
@@ -75,7 +79,7 @@ export const navigation = [
   { label: "Reviews", href: "/reviews" },
   { label: "Resources", href: "/resources" },
   { label: "FAQ", href: "/health-insurance-faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Existing Client Help", href: "/contact#existing-client-help" },
 ];
 export const coverageTypes = [
   "Individual",
@@ -83,7 +87,6 @@ export const coverageTypes = [
   "Self-employed/1099",
   "Small business",
   "Losing employer coverage",
-  "Medicare referral",
   "Other/general question",
 ] as const;
 export const testimonials = [
