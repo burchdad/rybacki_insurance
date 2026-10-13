@@ -3,7 +3,7 @@ export const faqs: FAQ[] = [
   {
     question: "Does working with an insurance agent cost more?",
     answer:
-      "Ask how the agent is paid and whether any fee applies before proceeding. Steve can explain compensation and the costs shown in your available plan options so you can make an informed comparison.",
+      "Ask how the agent is paid and whether any fee applies before proceeding. We can explain compensation and the costs shown in your available plan options so you can make an informed comparison.",
   },
   {
     question:
@@ -21,7 +21,7 @@ export const faqs: FAQ[] = [
   {
     question: "How are prescriptions handled?",
     answer:
-      "Coverage depends on the plan’s drug list, cost-sharing and any authorization requirements. Steve can explain how to check these details during a private consultation. Please do not put prescription information in this website’s forms.",
+      "Coverage depends on the plan’s drug list, cost-sharing and any authorization requirements. We can explain how to check these details during a private consultation. Please do not put prescription information in the general contact form; follow the instructions in the separate detailed intake.",
   },
   {
     question: "How do preexisting conditions affect options?",
@@ -37,7 +37,7 @@ export const faqs: FAQ[] = [
   {
     question: "Can I obtain coverage outside open enrollment?",
     answer:
-      "A qualifying life change may make a Marketplace Special Enrollment Period available. Timing, documentation and eligibility depend on the event. Other products have their own enrollment rules. Contact Steve promptly to review the options.",
+      "A qualifying life change may make a Marketplace Special Enrollment Period available. Timing, documentation and eligibility depend on the event. Other products have their own enrollment rules. Contact us promptly to review the options.",
     source:
       "https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/",
   },
@@ -56,12 +56,12 @@ export const faqs: FAQ[] = [
   {
     question: "How does small-business health insurance work?",
     answer:
-      "Start with the number of eligible employees, your contribution budget and existing benefits. Steve can help compare available group and other benefit arrangements, including their participation requirements, funding obligations and limitations.",
+      "Start with your own coverage and household needs. If you are seeking help with employee benefits, contact us to confirm which services are available before assuming that we offer a particular group or funding arrangement.",
   },
   {
     question: "What information is needed to begin?",
     answer:
-      "Your contact details, ZIP code, general coverage need and preferred timing are enough for an initial conversation. Do not send medical details, Social Security numbers, payment information or full birth dates through the website.",
+      "New coverage reviews begin with our existing detailed JotForm questionnaire, including its relevant health questions. For a general contact question, provide only your contact details and a brief description. Do not put medical details, Social Security numbers or payment information in the general contact form.",
   },
   {
     question: "How quickly can coverage start?",
@@ -69,19 +69,19 @@ export const faqs: FAQ[] = [
       "Effective dates depend on the product, enrollment window, application processing and required payment. Request written confirmation of your start date before ending existing coverage.",
   },
   {
-    question: "Which states does Steve serve?",
+    question: "Which states do we serve?",
     answer:
-      "The agency’s current published list contains 23 states, including Texas. Licensing and product availability may change. Confirm availability directly with Steve before proceeding.",
+      "The agency’s current published list contains 23 states, including Texas. Licensing and product availability may change. Confirm availability directly with us before proceeding.",
   },
   {
-    question: "Does Steve sell Medicare plans?",
+    question: "What if I need a service you do not handle?",
     answer:
-      "Medicare inquiries can be referred to an appropriately licensed Medicare specialist. This website does not present Steve as a Medicare plan seller.",
+      "Contact us to confirm whether we can help directly. If another licensed insurance professional may be appropriate, we will discuss a referral with you before sharing your information.",
   },
   {
     question: "How is personal information handled?",
     answer:
-      "The initial form is limited to contact and general coverage information. It is processed server-side and sent to the configured agency lead provider. Form values are not sent to analytics. See the privacy policy for the draft data-use and retention terms.",
+      "The general contact form and the detailed JotForm questionnaire are separate processes. Do not include sensitive information in a general contact question. Our site does not copy JotForm answers into its own API or analytics. Please review the privacy policy and contact us with questions about how information is handled.",
   },
   {
     question: "Does submitting a form enroll me in coverage?",

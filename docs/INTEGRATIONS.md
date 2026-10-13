@@ -27,7 +27,7 @@ The verified link from the existing agency homepage opens Calendly in a new tab.
 
 ## Analytics, retention and operations
 
-Optional analytics require both the build-time flag and affirmative visitor consent. Disable immediately through the footer preference. Sensitive fields are never event properties. Set a retention policy in the receiving CRM; the website itself keeps no inquiry database. `LEAD_RETENTION_DAYS` documents the target and must be wired to the CRM’s retention job by its administrator.
+Optional analytics require both the build-time flag and affirmative visitor consent. Disable immediately through the footer preference. Sensitive fields are never event properties. Set a retention policy in the receiving CRM; the website itself keeps no inquiry database. `LEAD_RETENTION_DAYS` is only a placeholder. No period is approved or enforced by this code. The receiving provider’s administrator must implement the owner-approved schedule.
 
 Set up provider delivery alerts, a named owner for unanswered inquiries and monitoring of aggregate endpoint error counts. Do not capture request bodies in error reporting or reverse-proxy logs. No claim of HIPAA compliance is made.
 

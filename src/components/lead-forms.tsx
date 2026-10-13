@@ -113,7 +113,7 @@ async function submitLead(data: CoverageInput | ContactInput) {
   const body = await response.json();
   if (!response.ok)
     throw new Error(
-      body.error || "Unable to send. Please try again or call Steve.",
+      body.error || "Unable to send. Please try again or call us.",
     );
   return body as { ok: boolean; status: "delivered" | "development" };
 }
@@ -268,7 +268,7 @@ export function CoverageReviewForm({ initialNeed }: { initialNeed?: string }) {
       }
     } catch (e) {
       setStatus(
-        e instanceof Error ? e.message : "Please try again or call Steve.",
+        e instanceof Error ? e.message : "Please try again or call us.",
       );
       event("form_error", "coverage");
     } finally {
@@ -346,12 +346,6 @@ export function CoverageReviewForm({ initialNeed }: { initialNeed?: string }) {
                 </label>
               ))}
             </fieldset>
-            {need === "Medicare referral" && (
-              <p className="limitation">
-                Steve can refer you to an appropriately licensed Medicare
-                specialist. This is a referral request, not Medicare enrollment.
-              </p>
-            )}
             <p className="fine">
               <LockKeyhole
                 size={14}
@@ -573,7 +567,7 @@ export function ContactForm() {
               );
             else {
               event("form_completion", "contact");
-              router.push("/thank-you");
+              router.push("/contact-thank-you");
             }
           } catch (e) {
             setStatus(e instanceof Error ? e.message : "Please try again.");
@@ -584,7 +578,7 @@ export function ContactForm() {
         })(e);
       }}
     >
-      <h2>Ask Steve a question.</h2>
+      <h2>Ask us a question.</h2>
       <p className="fine">Fields marked * are required. {site.response}</p>
       <Honeypot registration={register("website")} />
       <div className="field-grid">

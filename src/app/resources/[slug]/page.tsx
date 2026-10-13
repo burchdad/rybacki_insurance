@@ -99,8 +99,7 @@ export default async function ArticlePage({
           <div className="empty-state">
             <h2>Apply this to your own situation.</h2>
             <p>
-              Bring your questions to a personal coverage conversation with
-              Steve.
+              Bring your questions to a personal coverage conversation with us.
             </p>
             <div style={{ marginTop: 20 }} data-resource-cta>
               <ReviewCTA />

@@ -5,7 +5,7 @@ export default function NotFound() {
       <p className="eyebrow">404 · LET’S GET YOU BACK ON TRACK</p>
       <h1>This page took a different path.</h1>
       <p className="lede">
-        The link may have changed. You can explore coverage options or ask Steve
+        The link may have changed. You can explore coverage options or ask us
         for help.
       </p>
       <div className="actions" style={{ marginTop: 30 }}>
@@ -13,7 +13,7 @@ export default function NotFound() {
           Back to home
         </Link>
         <Link className="button button-outline" href="/contact">
-          Contact Steve
+          Contact us
         </Link>
       </div>
     </div>

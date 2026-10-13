@@ -928,3 +928,40 @@ body {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+
+/* Review-stage intake and client-service guidance. */
+.intake-notice {
+  max-width: 780px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+.existing-client-help {
+  margin: 35px 0 80px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--soft);
+  scroll-margin-top: 30px;
+}
+.existing-client-help > * + * {
+  margin-top: 18px;
+}
+.local-guide-link {
+  padding-block: 20px 40px;
+  text-align: center;
+}
+.footer .button {
+  white-space: normal;
+}
+.footer a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .mobile-actions a {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+  .existing-client-help {
+    padding: 24px;
+  }
+}

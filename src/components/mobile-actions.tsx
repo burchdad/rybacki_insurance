@@ -20,7 +20,12 @@ export function MobileActions() {
   }, [pathname]);
 
   const hidden =
-    ["/coverage-review", "/contact", "/thank-you"].includes(pathname) ||
+    [
+      "/coverage-review",
+      "/contact",
+      "/thank-you",
+      "/contact-thank-you",
+    ].includes(pathname) ||
     (pathname === "/" && !pastHero);
   return (
     <div
@@ -30,10 +35,10 @@ export function MobileActions() {
     >
       <a href={site.phoneHref}>
         <Phone size={17} />
-        Call Steve
+        Call us
       </a>
       <Link href="/coverage-review" data-event="primary_cta_click">
-        Start Review
+        Start My Coverage Review
         <ArrowUpRight size={17} />
       </Link>
     </div>

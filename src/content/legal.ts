@@ -10,7 +10,7 @@ export const legalPages = {
       },
       {
         title: "Information you choose to share",
-        body: "Coverage-review and contact forms collect contact details, general coverage needs, contact preferences and your consent choices. Do not submit diagnoses, prescription details, Social Security numbers, payment details or other highly sensitive information.",
+        body: "The general contact form collects contact details, a brief question and consent choices. Do not include medical or highly sensitive information in that form. The separate JotForm coverage questionnaire includes relevant health questions. Its actual processing, recipients and disclosures must be verified before launch.",
       },
       {
         title: "How your inquiry is used",
@@ -26,7 +26,7 @@ export const legalPages = {
       },
       {
         title: "Retention and requests",
-        body: "The agency must set and enforce a retention period in its receiving system before launch. The initial configuration target is 30 days for unconverted inquiries, subject to review and applicable obligations. Contact the agency to request access, correction or deletion and to discuss any legally required retention.",
+        body: "The agency must set and enforce a retention period in its receiving system before launch. No fixed retention period has been approved for this replacement site. Contact the agency to request access, correction or deletion and to discuss any legally required retention.",
       },
       {
         title: "Text messaging",

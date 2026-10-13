@@ -41,9 +41,11 @@ export default function Home() {
             <em>Health Insurance?</em>
           </h1>
           <p className="ocean-hero-description">
-            Helping self-employed individuals, families, small business owners,
-            and those losing employer coverage compare private health insurance
-            and Marketplace plans throughout Texas.
+            Compare public and private options. We help self-employed and 1099
+            workers, families paying full price, small business owners, and
+            people leaving employer coverage understand their choices. If adding
+            your spouse or children to an employer plan is expensive, we can
+            help you compare available options.
           </p>
           <div className="actions">
             <ReviewCTA />
@@ -73,6 +75,14 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="container local-guide-link">
+        <Link
+          className="text-link"
+          href="/resources/choosing-health-insurance-tyler"
+        >
+          Choosing health insurance in Tyler, TX <ArrowUpRight size={17} />
+        </Link>
+      </section>
       <AudienceSelector />
       <Steps />
 
@@ -106,7 +116,9 @@ export default function Home() {
         <p>
           For Texas families, independent professionals, and small businesses.
         </p>
-        <p>Private and Marketplace options. A conversation built around you.</p>
+        <p>
+          Compare public and private options. A conversation built around you.
+        </p>
       </section>
       <CTASection />
     </div>
