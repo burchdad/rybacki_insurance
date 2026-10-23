@@ -144,6 +144,7 @@ test("responsive pages fit desktop, tablet and phone", async ({ page }) => {
       "/licensed-states",
     ]) {
       await page.goto(route);
+      await expect(page.locator("h1")).toBeVisible();
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -152,6 +153,19 @@ test("responsive pages fit desktop, tablet and phone", async ({ page }) => {
       ).toBe(true);
     }
     await page.goto("/");
+    await expect(page.locator("#home-heading")).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await expect
+      .poll(() =>
+        page
+          .locator(".ocean-hero img")
+          .evaluate(
+            (image) =>
+              (image as HTMLImageElement).complete &&
+              (image as HTMLImageElement).naturalWidth > 0,
+          ),
+      )
+      .toBe(true);
     await page.screenshot({
       path: `test-results/home-${width}.png`,
       fullPage: true,
