@@ -16,7 +16,7 @@ import { metadata as makeMetadata } from "@/lib/seo";
 
 export const metadata = makeMetadata(
   "Health Insurance Options for Texas Families & Businesses",
-  "Compare private and Marketplace coverage with Steven Rybacki, a local Tyler advisor for families, self-employed professionals and small businesses.",
+  "Explore private health coverage with Steven Rybacki in Tyler, with ACA Marketplace coverage handled through licensed referral partners.",
   "/",
 );
 
@@ -41,11 +41,11 @@ export default function Home() {
             <em>Health Insurance?</em>
           </h1>
           <p className="ocean-hero-description">
-            Compare public and private options. We help self-employed and 1099
-            workers, families paying full price, small business owners, and
-            people leaving employer coverage understand their choices. If adding
-            your spouse or children to an employer plan is expensive, we can
-            help you compare available options.
+            Explore private coverage and Marketplace referral options. We help
+            self-employed and 1099 workers, families paying full price, small
+            business owners, and people leaving employer coverage understand
+            their choices. If adding your spouse or children to an employer plan
+            is expensive, we can help you compare available options.
           </p>
           <div className="actions">
             <ReviewCTA />
@@ -117,7 +117,8 @@ export default function Home() {
           For Texas families, independent professionals, and small businesses.
         </p>
         <p>
-          Compare public and private options. A conversation built around you.
+          Private coverage and licensed Marketplace referrals. A conversation
+          built around you.
         </p>
       </section>
       <CTASection />

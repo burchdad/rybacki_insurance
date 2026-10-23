@@ -38,7 +38,7 @@ export function MobileActions() {
         Call us
       </a>
       <Link href="/coverage-review" data-event="primary_cta_click">
-        Start My Coverage Review
+        Start My Quote
         <ArrowUpRight size={17} />
       </Link>
     </div>

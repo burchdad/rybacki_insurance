@@ -1,3 +1,4 @@
+import { site } from "./site";
 export type FAQ = { question: string; answer: string; source?: string };
 export const faqs: FAQ[] = [
   {
@@ -56,7 +57,7 @@ export const faqs: FAQ[] = [
   {
     question: "How does small-business health insurance work?",
     answer:
-      "Start with your own coverage and household needs. If you are seeking help with employee benefits, contact us to confirm which services are available before assuming that we offer a particular group or funding arrangement.",
+      "We help small businesses explore employee health insurance options through consultations, employee census information and preliminary coverage proposals within our available product offerings. We do not advertise level-funded group plans as a service we directly provide.",
   },
   {
     question: "What information is needed to begin?",
@@ -71,7 +72,7 @@ export const faqs: FAQ[] = [
   {
     question: "Which states do we serve?",
     answer:
-      "The agency’s current published list contains 23 states, including Texas. Licensing and product availability may change. Confirm availability directly with us before proceeding.",
+      "Licensed in multiple states. Licensing and product availability may change. Contact us to confirm availability in your state before proceeding.",
   },
   {
     question: "What if I need a service you do not handle?",
@@ -88,4 +89,9 @@ export const faqs: FAQ[] = [
     answer:
       "No. Your request starts a conversation. Enrollment requires a separate application, any required approvals and confirmation from the insurer.",
   },
+  {
+    question: "Do you directly handle ACA Marketplace policies?",
+    answer: site.marketplaceReferral,
+  },
+  { question: "Do you sell Medicare policies?", answer: site.medicareReferral },
 ];

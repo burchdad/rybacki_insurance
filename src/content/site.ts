@@ -1,4 +1,5 @@
-// OWNER: Confirm licensing, hours, contact details, consent language and links before launch.
+// Contact details and service scope confirmed by owner October 23, 2026.
+// Active state list, privacy/consent practices and final launch approval remain pending.
 export const site = {
   name: "Rybacki Insurance Agency",
   agent: "Steven Rybacki",
@@ -19,7 +20,7 @@ export const site = {
     postalCode: "75702",
     addressCountry: "US",
   },
-  hours: ["Monday–Friday: 8am–10pm", "Saturday: 9am–1pm"],
+  hours: ["Monday–Friday: 8:00 AM–10:00 PM", "Saturday: 9:00 AM–1:00 PM"],
   timezone: "Central time",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ||
@@ -27,11 +28,19 @@ export const site = {
   calendly:
     "https://calendly.com/steven-rybacki/health-insurance-coverage-review",
   map: "https://www.google.com/maps/search/?api=1&query=110+N+College+Ave+Suite+801+Tyler+TX+75702",
+  memberPortal: "https://myushg.ushealthgroup.com/",
+  memberServices: "https://www.ushealthgroup.com/member-services",
+  googleReview: "https://g.page/r/CUm5ik5bKFWHEBM/review",
+  licensing: "Licensed in multiple states",
+  marketplaceReferral:
+    "ACA Marketplace policies are handled through licensed referral partners Matt Jubie and Gary Morazzano, rather than directly issued or serviced by Steven Rybacki.",
+  medicareReferral:
+    "Steven Rybacki is not Medicare-licensed and does not directly sell Medicare policies. With your permission, Medicare inquiries can be referred to an appropriately licensed agent.",
   socials: [] as { label: string; href: string }[], // Add only verified agency profiles.
   appointments:
     "Most appointments take place by phone and screen sharing. Office visits are available by appointment.",
   affiliation:
-    "Our agency is led by Steven Rybacki, an insurance agent contracted with USHEALTH Advisors. Through that affiliation, available products include coverage underwritten by Freedom Life Insurance Company of America. If another licensed professional may be helpful, we will ask your permission before sharing relevant information for a referral.",
+    "Steven Rybacki works directly with private, medically underwritten health insurance products through USHEALTH Advisors and associated carriers, including Freedom Life Insurance Company of America. ACA Marketplace coverage is handled through licensed referral partners. Steven does not directly sell Medicare policies; Medicare referrals require your permission.",
   response:
     "We will follow up during office hours. If your coverage deadline is close, please call.",
   positioning:
@@ -48,32 +57,6 @@ export const site = {
     "Optional: I agree to receive text messages from Rybacki Insurance Agency about this inquiry. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.",
   analyticsEnabled: process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true",
 };
-// OWNER MUST VERIFY BEFORE LAUNCH. Source: existing agency website, reviewed 2026-09-16.
-export const licensedStates = [
-  "Alabama",
-  "Arkansas",
-  "Colorado",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maryland",
-  "Michigan",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "North Carolina",
-  "Ohio",
-  "Oklahoma",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Virginia",
-  "Wyoming",
-];
 export const navigation = [
   { label: "About Steve", href: "/about-steven-rybacki" },
   { label: "Reviews", href: "/reviews" },

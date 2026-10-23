@@ -29,11 +29,11 @@ export const services: Service[] = [
     options: [
       {
         title: "Marketplace coverage",
-        body: "Review available plans and whether a Marketplace application may identify financial assistance.",
+        body: "Marketplace policies are handled through licensed referral partners Matt Jubie and Gary Morazzano, rather than directly issued or serviced by Steven Rybacki.",
       },
       {
         title: "Off-Marketplace options",
-        body: "Compare available individual products, their benefits and their limitations side by side.",
+        body: "Review private, medically underwritten products available through USHEALTH Advisors and associated carriers, including Freedom Life Insurance Company of America.",
       },
       {
         title: "A household-wide perspective",
@@ -61,7 +61,7 @@ export const services: Service[] = [
     options: [
       {
         title: "Individual and family plans",
-        body: "Review Marketplace and other available options based on your location and eligibility.",
+        body: "Review available private, medically underwritten products. ACA Marketplace policies are handled through licensed referral partners, not directly issued or serviced by Steven Rybacki.",
       },
       {
         title: "Coverage through a transition",
@@ -83,7 +83,7 @@ export const services: Service[] = [
     short: "Small business owners",
     eyebrow: "Health coverage for small business owners",
     description:
-      "Running a business brings enough decisions. We help you start with the coverage needs of you and your household and understand which options are available.",
+      "We help small-business owners explore coverage for themselves, their households and their employees within our available product offerings.",
     need: "Small business",
     problems: [
       "Finding coverage for yourself and your family",
@@ -101,12 +101,12 @@ export const services: Service[] = [
       },
       {
         title: "Questions about your team",
-        body: "Tell us what you need. We will confirm whether we can help directly before discussing a particular service or any referral.",
+        body: "We can conduct consultations, gather employee census information and develop preliminary coverage proposals within our available product offerings. Contact us to discuss next steps; do not send employee health information through the general contact form.",
       },
     ],
-    fit: "Small business owners, sole proprietors and independent professionals reviewing coverage for themselves and their households.",
+    fit: "Small-business owners, sole proprietors and independent professionals exploring coverage for themselves, their households or employees.",
     limitation:
-      "Available services and products must be confirmed with us. This page does not promise group insurance, level-funded arrangements, eligibility or coverage approval.",
+      "Proposals are limited to available product offerings. Level-funded group plans are not advertised as a service we directly provide. No eligibility or coverage approval is guaranteed.",
     faqIndices: [9, 0, 10],
   },
   {
@@ -129,7 +129,7 @@ export const services: Service[] = [
       },
       {
         title: "Marketplace enrollment",
-        body: "A loss of qualifying coverage may create a Special Enrollment Period. Check your circumstances and timing.",
+        body: "A loss of qualifying coverage may create a Special Enrollment Period. Marketplace policies are handled through licensed referral partners who can review your circumstances and timing.",
       },
       {
         title: "Other available coverage",
