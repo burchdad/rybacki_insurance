@@ -13,8 +13,8 @@ export default function CoverageReview() {
       <div className="intake-wrap">
         <PageIntro
           eyebrow="RYBACKI INSURANCE AGENCY"
-          title="Start My Coverage Review"
-          description="No pressure. Just real options."
+          title="Start My Quote"
+          description="Start with a questionnaire to prepare for a personal consultation—not an instant price."
         />
         <p className="intake-notice">
           Complete our existing questionnaire below, then use the thank-you page

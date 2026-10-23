@@ -144,6 +144,7 @@ test("responsive pages fit desktop, tablet and phone", async ({ page }) => {
       "/licensed-states",
     ]) {
       await page.goto(route);
+      await expect(page.locator("h1")).toBeVisible();
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -152,6 +153,19 @@ test("responsive pages fit desktop, tablet and phone", async ({ page }) => {
       ).toBe(true);
     }
     await page.goto("/");
+    await expect(page.locator("#home-heading")).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await expect
+      .poll(() =>
+        page
+          .locator(".ocean-hero img")
+          .evaluate(
+            (image) =>
+              (image as HTMLImageElement).complete &&
+              (image as HTMLImageElement).naturalWidth > 0,
+          ),
+      )
+      .toBe(true);
     await page.screenshot({
       path: `test-results/home-${width}.png`,
       fullPage: true,
@@ -242,7 +256,7 @@ test("prospect pages keep intake first and use the approved review CTA", async (
       'a.button[href^="/coverage-review"], .mobile-actions a[href="/coverage-review"]',
     );
     for (const button of await buttons.all()) {
-      await expect(button, route).toHaveText(/Start My Coverage Review/);
+      await expect(button, route).toHaveText(/Start My Quote/);
     }
     await expect(
       page
@@ -357,6 +371,109 @@ test("a confirmed general contact submission does not bypass coverage intake", a
   expect(localRequests).toBe(1);
   await expect(page.locator('a[href*="calendly.com"]')).toHaveCount(0);
   await expect(
-    page.getByRole("link", { name: /Start My Coverage Review/ }).first(),
+    page.getByRole("link", { name: /Start My Quote/ }).first(),
   ).toHaveAttribute("href", "/coverage-review");
+});
+
+test("quote intake explains consultation and reviews have no video placeholder", async ({
+  page,
+}) => {
+  await page.goto("/coverage-review");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Start My Quote",
+  );
+  await expect(page.getByText(/not an instant price/)).toBeVisible();
+  await page.goto("/reviews");
+  await expect(page.getByText(/Approved video testimonials/)).toHaveCount(0);
+  await expect(page.locator("blockquote")).toHaveCount(1);
+});
+
+test("contact validation exposes required fields and focuses invalid callback", async ({
+  page,
+}) => {
+  await page.goto("/contact");
+  const phone = page.getByLabel("Phone (required");
+  await expect(phone).not.toHaveAttribute("required");
+  await expect(page.getByLabel(/^I agree that/)).toHaveAttribute(
+    "required",
+    "",
+  );
+  await page.getByLabel("Name", { exact: false }).first().fill("Test Visitor");
+  await page
+    .getByLabel("Email", { exact: false })
+    .first()
+    .fill("test@example.com");
+  await page.getByLabel("Preferred reply method").selectOption("Phone");
+  await expect(phone).toHaveAttribute("required", "");
+  await page.getByLabel("Your question").fill("Fictional validation test only");
+  await page.getByLabel(/^I agree that/).check();
+  await page.getByRole("button", { name: "Send my question" }).click();
+  await expect(phone).toBeFocused();
+  await expect(phone).toHaveAttribute("aria-invalid", "true");
+  await expect(phone).toHaveAttribute("aria-describedby", "phone-error");
+  await page.getByLabel("Preferred reply method").selectOption("Email");
+  await expect(phone).not.toHaveAttribute("required");
+});
+
+test("contact retains input after unconfirmed responses and retries once with same identity", async ({
+  page,
+}) => {
+  const ids: string[] = [];
+  await page.route("**/api/leads", async (route) => {
+    ids.push(route.request().postDataJSON().submissionId);
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: "{}",
+    });
+  });
+  await page.goto("/contact");
+  await page.getByLabel("Name", { exact: false }).first().fill("Test Visitor");
+  await page
+    .getByLabel("Email", { exact: false })
+    .first()
+    .fill("test@example.com");
+  await page.getByLabel("Your question").fill("Fictional retry test only");
+  await page.getByLabel(/^I agree that/).check();
+  for (let i = 0; i < 2; i++) {
+    await page.getByRole("button", { name: "Send my question" }).click();
+    await expect(
+      page.getByText(
+        "Your inquiry could not be confirmed. Please try again or call us.",
+      ),
+    ).toBeVisible();
+    await expect(page).toHaveURL(/\/contact$/);
+    await expect(page.getByLabel("Your question")).toHaveValue(
+      "Fictional retry test only",
+    );
+  }
+  expect(ids).toHaveLength(2);
+  expect(ids[0]).toBe(ids[1]);
+});
+
+test("confirmed owner facts keep referrals separate from intake and expose member links", async ({
+  page,
+}) => {
+  await page.goto("/licensed-states");
+  await expect(
+    page.getByText("Licensed in multiple states", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText(/23 states|33 states/)).toHaveCount(0);
+  await expect(page.locator(".states-grid")).toHaveCount(0);
+  await page.goto("/contact#referral-help");
+  const referral = page.locator("#referral-help");
+  await expect(referral).toContainText("not Medicare-licensed");
+  await expect(referral).toContainText("Matt Jubie and Gary Morazzano");
+  await expect(referral.locator("iframe, form")).toHaveCount(0);
+  const help = page.locator("#existing-client-help");
+  await expect(
+    help.getByRole("link", { name: /MyUSHG member portal/ }),
+  ).toHaveAttribute("href", "https://myushg.ushealthgroup.com/");
+  await expect(
+    help.getByRole("link", { name: /USHEALTH Group Member Services/ }),
+  ).toHaveAttribute("href", "https://www.ushealthgroup.com/member-services");
+  await page.goto("/reviews");
+  await expect(
+    page.getByRole("link", { name: /Leave a review on Google/ }),
+  ).toHaveAttribute("href", "https://g.page/r/CUm5ik5bKFWHEBM/review");
 });

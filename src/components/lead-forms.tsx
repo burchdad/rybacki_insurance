@@ -110,10 +110,14 @@ async function submitLead(data: CoverageInput | ContactInput) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  const body = await response.json();
+  const body = await response.json().catch(() => null);
   if (!response.ok)
     throw new Error(
-      body.error || "Unable to send. Please try again or call us.",
+      body?.error || "Unable to send. Please try again or call us.",
+    );
+  if (body?.ok !== true || !["delivered", "development"].includes(body?.status))
+    throw new Error(
+      "Your inquiry could not be confirmed. Please try again or call us.",
     );
   return body as { ok: boolean; status: "delivered" | "development" };
 }
@@ -131,6 +135,7 @@ function Consent({
       <label className="checkbox-row">
         <input
           type="checkbox"
+          required
           {...registerConsent}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? "consent-error" : undefined}
@@ -525,6 +530,7 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    control,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactInput>({
@@ -543,6 +549,7 @@ export function ContactForm() {
       startedAt: 0,
     },
   });
+  const preferredContact = useWatch({ control, name: "preferredContact" });
   function initialize() {
     if (!identity.current)
       identity.current = { id: crypto.randomUUID(), startedAt: Date.now() };
@@ -599,6 +606,7 @@ export function ContactForm() {
         />
         <Field
           label="Phone (required for a callback)"
+          required={preferredContact === "Phone"}
           registration={register("phone")}
           error={errors.phone?.message}
           type="tel"

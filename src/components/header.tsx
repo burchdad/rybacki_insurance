@@ -55,7 +55,7 @@ export function Header() {
             data-event="primary_cta_click"
             href="/coverage-review"
           >
-            Start My Coverage Review <ArrowUpRight size={16} />
+            Start My Quote <ArrowUpRight size={16} />
           </Link>
           <button
             ref={trigger}
@@ -124,7 +124,7 @@ export function Header() {
               </Link>
             ))}
             <Link className="button" href="/coverage-review">
-              Start My Coverage Review
+              Start My Quote
             </Link>
             <a href={site.phoneHref}>
               <Phone size={16} aria-hidden="true" /> Call us: {site.phone}

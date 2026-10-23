@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { services } from "@/content/services";
-import { site, licensedStates } from "@/content/site";
+import { site } from "@/content/site";
 import { faqs } from "@/content/faqs";
 import { legalPages } from "@/content/legal";
 import {
@@ -41,7 +41,7 @@ const otherPages: Record<string, { title: string; description: string }> = {
   "licensed-states": {
     title: "Licensed States",
     description:
-      "Review the agency’s published 23-state service list and confirm current licensing and product availability.",
+      "Licensed in multiple states. Contact the agency to confirm current licensing and product availability in your state.",
   },
   contact: {
     title: "Contact Us and Existing Client Help",
@@ -236,23 +236,27 @@ export default async function ContentPage({
             <div>
               <h2>A local connection.</h2>
               <p>
-                Steven Rybacki leads Rybacki Insurance Agency in downtown Tyler,
-                Texas. He and his wife, Sarah, are high school sweethearts and
-                parents of two sons.
+                I’m Steven Rybacki. I served in the Navy, and I lead Rybacki
+                Insurance Agency in downtown Tyler, Texas. My wife, Sarah, and I
+                are high school sweethearts and parents of two sons.
               </p>
               <p>
-                Our approach begins with listening. We help individuals,
-                families and business owners understand available coverage, ask
-                useful questions and make an informed choice without pressure.
+                I start by listening. I help individuals, families and business
+                owners understand available coverage, ask useful questions and
+                make an informed choice without pressure.
               </p>
-              <h3>Every conversation starts with you.</h3>
-              <p>{site.positioning}</p>
+              <h3>Your questions come first.</h3>
+              <p>
+                I’ll work with you to understand your coverage needs, your
+                doctors and your budget. You can ask questions as we discuss
+                available options.
+              </p>
               <div className="actions" style={{ marginTop: 25 }}>
                 <ReviewCTA />
                 <PhoneCTA />
               </div>
               <Link className="text-link" href="/licensed-states">
-                See the published licensed-state list
+                Check availability in your state
               </Link>
             </div>
           </section>
@@ -282,22 +286,17 @@ export default async function ContentPage({
           />
           <div className="prose">
             <Testimonials />
+            <a
+              className="text-link"
+              href={site.googleReview}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Leave a review on Google (opens in a new tab)
+            </a>
           </div>
         </div>
         <CTASection />
-        <section className="section container">
-          <div className="empty-state">
-            <p className="eyebrow">MORE CLIENT STORIES</p>
-            <h2>Prefer to hear a story firsthand?</h2>
-            <p>
-              Ask us about the process and what to expect. Approved video
-              testimonials will be added here when available.
-            </p>
-            <Link className="text-link" href="/contact">
-              Talk with us
-            </Link>
-          </div>
-        </section>
       </>
     );
   if (slug === "health-insurance-faq")
@@ -326,16 +325,8 @@ export default async function ContentPage({
           <PageIntro
             eyebrow="BASED IN TYLER. CONNECTED BEYOND TEXAS."
             title="Start local. Check your state."
-            description="The agency’s current published list includes the following 23 states. Please confirm current availability with us."
+            description={site.licensing}
           />
-          <div className="draft-notice">
-            Owner confirmation of this licensing list is required before launch.
-          </div>
-          <ul className="states-grid">
-            {licensedStates.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
           <p>{site.licensingDisclaimer}</p>
           <div className="actions" style={{ margin: "30px 0 65px" }}>
             <ReviewCTA />
@@ -371,6 +362,26 @@ export default async function ContentPage({
           <ContactForm />
         </div>
         <section
+          id="referral-help"
+          aria-labelledby="referral-help-heading"
+          className="existing-client-help"
+        >
+          <h2 id="referral-help-heading">Marketplace and Medicare referrals</h2>
+          <p>{site.marketplaceReferral}</p>
+          <p>{site.medicareReferral}</p>
+          <p>
+            Call or email to ask about a referral. You do not need to complete
+            the general health questionnaire for a Medicare referral. Keep
+            medical details out of general emails and contact questions.
+          </p>
+          <div className="actions">
+            <PhoneCTA />
+            <a className="text-link" href={`mailto:${site.email}`}>
+              Ask about a referral
+            </a>
+          </div>
+        </section>
+        <section
           className="existing-client-help"
           id="existing-client-help"
           aria-labelledby="client-help-heading"
@@ -381,7 +392,31 @@ export default async function ContentPage({
             another service question? Call or email us directly. You do not need
             to complete a new-prospect questionnaire.
           </p>
+          <p>
+            Existing USHEALTH Group clients can use MyUSHG for policy
+            information, payment statements, explanations of benefits,
+            identification cards and network resources. Contact Steve for help
+            understanding your coverage or navigating a claim. For
+            account-specific billing, claim determinations and carrier
+            servicing, contact your carrier’s Member Services department.
+          </p>
           <div className="actions">
+            <a
+              className="button"
+              href={site.memberPortal}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MyUSHG member portal (opens in a new tab)
+            </a>
+            <a
+              className="text-link"
+              href={site.memberServices}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              USHEALTH Group Member Services (opens in a new tab)
+            </a>
             <PhoneCTA />
             <a className="text-link" href={`mailto:${site.email}`}>
               Email us for client help

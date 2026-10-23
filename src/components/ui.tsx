@@ -16,7 +16,7 @@ export function JsonLd({ data }: { data: unknown }) {
   );
 }
 export function ReviewCTA({
-  label = "Start My Coverage Review",
+  label = "Start My Quote",
   href = "/coverage-review",
 }: {
   label?: string;
@@ -204,8 +204,8 @@ export function Steps() {
               text: "After submitting the questionnaire, use the scheduling link on the thank-you page to choose a time.",
             },
             {
-              title: "Compare public and private options.",
-              text: "We will talk through available options, networks, benefits and costs so you can decide at your own pace.",
+              title: "Review coverage and referral options.",
+              text: "We will discuss available private products, networks, benefits and costs. Marketplace policies are handled through licensed referral partners.",
             },
           ].map((s, i) => (
             <div key={s.title}>
@@ -218,6 +218,11 @@ export function Steps() {
         <p className="fine center">
           Completing the intake starts a conversation. It does not enroll you in
           insurance or establish coverage.
+        </p>
+        <p className="center">
+          <Link className="text-link" href="/contact#referral-help">
+            Ask about Marketplace or Medicare referral help
+          </Link>
         </p>
       </div>
     </section>
@@ -373,7 +378,7 @@ export function TrustIndicators() {
     <div className="trust-indicators">
       {[
         "Tyler-based, personal service",
-        "Compare public and private options",
+        "Private coverage and Marketplace referrals",
         "No-obligation conversation",
       ].map((t) => (
         <span key={t}>
