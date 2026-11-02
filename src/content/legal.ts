@@ -10,7 +10,7 @@ export const legalPages = {
       },
       {
         title: "Information you choose to share",
-        body: "The general contact form collects contact details, a brief question and consent choices. Do not include medical or highly sensitive information in that form. The separate JotForm coverage questionnaire includes relevant health questions. Its actual processing, recipients and disclosures must be verified before launch.",
+        body: "The general contact form collects contact details, a brief question and permission to respond. Do not include medical or highly sensitive information in that form. The separate JotForm coverage questionnaire includes relevant health questions. Its actual processing, recipients and disclosures must be verified before launch.",
       },
       {
         title: "How your inquiry is used",
@@ -30,7 +30,7 @@ export const legalPages = {
       },
       {
         title: "Text messaging",
-        body: "Optional text consent is separate from permission to respond to your inquiry and is not required for purchase. Message frequency varies and message or data rates may apply. Reply STOP to opt out or HELP for help. Texting must not be activated until the messaging provider and consent process have been reviewed.",
+        body: "The general contact form does not offer text-message opt-in and does not collect SMS consent. Permission to respond to a general inquiry is not SMS marketing consent. Any future texting service, consent wording and opt-out process must be reviewed separately before activation.",
       },
       {
         title: "Security and changes",

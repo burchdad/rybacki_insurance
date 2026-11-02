@@ -101,6 +101,32 @@ describe("server and delivery boundaries", () => {
     expect(res.status).toBe(200);
     expect((await res.json()).status).toBe("development");
   });
+  it("fails closed with a safe response when the site URL is invalid", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "not-a-url");
+    const res = await POST(request(validLead()));
+    expect(res.status).toBe(503);
+    expect(res.headers.get("cache-control")).toBe("no-store");
+    expect(await res.json()).not.toHaveProperty("ok");
+    expect(rateLimit).not.toHaveBeenCalled();
+    expect(claimSubmission).not.toHaveBeenCalled();
+  });
+  it("does not relabel a simulation as delivered after bookkeeping fails", async () => {
+    vi.mocked(finishSubmission).mockRejectedValueOnce(new Error("unavailable"));
+    const res = await POST(request(validLead()));
+    expect(res.status).toBe(200);
+    expect((await res.json()).status).toBe("development");
+  });
+  it("keeps an accepted webhook receipt when bookkeeping fails", async () => {
+    vi.stubEnv("LEAD_ADAPTER", "webhook");
+    vi.stubEnv("LEAD_WEBHOOK_URL", "https://provider.example/leads");
+    vi.stubEnv("LEAD_WEBHOOK_TOKEN", "test-token");
+    const fetchMock = vi.fn(async () => new Response("{}", { status: 202 }));
+    vi.stubGlobal("fetch", fetchMock);
+    vi.mocked(finishSubmission).mockRejectedValueOnce(new Error("unavailable"));
+    const res = await POST(request(validLead()));
+    expect((await res.json()).status).toBe("delivered");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
   it("rejects cross-origin submissions", async () =>
     expect(
       (await POST(request(validLead(), "https://other.example"))).status,
