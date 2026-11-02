@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { leadSchema } from "@/lib/validation";
 import { site } from "@/content/site";
-import { getLeadAdapter } from "@/lib/lead-adapter";
+import { type DeliveryReceipt, getLeadAdapter } from "@/lib/lead-adapter";
 import {
   claimSubmission,
   finishSubmission,
@@ -12,31 +12,31 @@ export const runtime = "nodejs";
 const reply = (body: object, status = 200) =>
   NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
 export async function POST(request: NextRequest) {
-  const origin = request.headers.get("origin");
-  const expected = process.env.NEXT_PUBLIC_SITE_URL
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL).origin
-    : request.nextUrl.origin;
-  if (
-    !origin ||
-    (origin !== expected &&
-      !(
-        process.env.NODE_ENV !== "production" &&
-        [
-          request.nextUrl.origin,
-          "http://localhost:3000",
-          "http://127.0.0.1:3000",
-        ].includes(origin)
-      ))
-  )
-    return reply({ error: "Please submit from this website." }, 403);
-  if (!request.headers.get("content-type")?.startsWith("application/json"))
-    return reply({ error: "Unsupported request format." }, 415);
-  if (Number(request.headers.get("content-length") || 0) > 16000)
-    return reply({ error: "The message is too large." }, 413);
   let id: string | undefined;
   let claimed = false;
-  let delivered = false;
+  let receipt: DeliveryReceipt | undefined;
   try {
+    const origin = request.headers.get("origin");
+    const expected = process.env.NEXT_PUBLIC_SITE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SITE_URL).origin
+      : request.nextUrl.origin;
+    if (
+      !origin ||
+      (origin !== expected &&
+        !(
+          process.env.NODE_ENV !== "production" &&
+          [
+            request.nextUrl.origin,
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+          ].includes(origin)
+        ))
+    )
+      return reply({ error: "Please submit from this website." }, 403);
+    if (!request.headers.get("content-type")?.startsWith("application/json"))
+      return reply({ error: "Unsupported request format." }, 415);
+    if (Number(request.headers.get("content-length") || 0) > 16000)
+      return reply({ error: "The message is too large." }, 413);
     // Bound the actual stream; content-length is not trusted.
     const reader = request.body?.getReader();
     if (!reader) return reply({ error: "An inquiry is required." }, 400);
@@ -111,18 +111,17 @@ export async function POST(request: NextRequest) {
         409,
       );
     claimed = true;
-    const receipt = await adapter.deliver(lead);
-    delivered = true;
+    receipt = await adapter.deliver(lead);
     await finishSubmission(id);
     return reply({ ok: true, status: receipt.status });
   } catch {
     // Never log request bodies, form values, provider errors, tokens or personal data.
-    if (id && claimed && !delivered) {
+    if (id && claimed && !receipt) {
       try {
         await releaseSubmission(id);
       } catch {}
     }
-    if (delivered) return reply({ ok: true, status: "delivered" });
+    if (receipt) return reply({ ok: true, status: receipt.status });
     return reply(
       {
         error: `Your inquiry could not be confirmed. Your entries are still here. Please retry or call ${site.phone}.`,

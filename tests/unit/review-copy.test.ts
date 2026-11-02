@@ -1,3 +1,4 @@
+import { legalPages } from "../../src/content/legal";
 import { site } from "../../src/content/site";
 import { faqs } from "../../src/content/faqs";
 import { services } from "../../src/content/services";
@@ -13,6 +14,18 @@ import CoverageReview from "../../src/app/coverage-review/page";
 import ContentPage from "../../src/app/[slug]/page";
 
 describe("October client review copy", () => {
+  it("describes general-contact reply permission without claiming SMS opt-in", () => {
+    const sections = legalPages["privacy-policy"].sections;
+    expect(
+      sections.find((s) => s.title === "Information you choose to share")?.body,
+    ).toContain("permission to respond");
+    expect(sections.find((s) => s.title === "Text messaging")?.body).toContain(
+      "does not collect SMS consent",
+    );
+    expect(
+      sections.find((s) => s.title === "Retention and requests")?.body,
+    ).toContain("No fixed retention period has been approved");
+  });
   it("keeps Start My Quote routed to intake, not scheduling", () => {
     const html = renderToStaticMarkup(createElement(ReviewCTA));
     expect(html).toContain("Start My Quote");
