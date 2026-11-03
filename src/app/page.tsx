@@ -6,7 +6,6 @@ import {
   AdvisorPortrait,
   AudienceSelector,
   Steps,
-  Testimonials,
   FAQAccordion,
   CTASection,
 } from "@/components/ui";
@@ -85,17 +84,6 @@ export default function Home() {
       </section>
       <AudienceSelector />
       <Steps />
-
-      <section className="ocean-testimonial">
-        <div className="container">
-          <p className="eyebrow">SPACE TO ASK. TIME TO UNDERSTAND.</p>
-          <h2 className="sr-only">A client’s experience with Steve</h2>
-          <Testimonials />
-          <Link href="/reviews" className="text-link">
-            Read client stories <ArrowUpRight size={17} />
-          </Link>
-        </div>
-      </section>
 
       <section className="container ocean-questions">
         <div>

@@ -174,7 +174,9 @@ export default async function ContentPage({
               <p className="eyebrow">CLIENT PERSPECTIVE</p>
               <h2>Time for your questions.</h2>
             </div>
-            <Testimonials />
+            <Link className="text-link" href="/reviews">
+              Read a client’s experience
+            </Link>
           </div>
         </section>
         <div className="container">
