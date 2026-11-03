@@ -965,3 +965,24 @@ body {
     padding: 24px;
   }
 }
+
+/* Keep the intake sequence visible next to every shared quote action. */
+.quote-action {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  max-width: 22rem;
+}
+.quote-action-help {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.advisor-portrait:not(.compact) .advisor-image {
+  aspect-ratio: 3 / 2;
+}
+.advisor-portrait .advisor-image img {
+  object-position: center;
+}

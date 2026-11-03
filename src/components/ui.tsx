@@ -23,10 +23,15 @@ export function ReviewCTA({
   href?: string;
 }) {
   return (
-    <Link href={href} className="button" data-event="primary_cta_click">
-      {label}
-      <ArrowUpRight size={18} />
-    </Link>
+    <span className="quote-action">
+      <Link href={href} className="button" data-event="primary_cta_click">
+        {label}
+        <ArrowUpRight size={18} />
+      </Link>
+      <span className="quote-action-help">
+        Complete the questionnaire, then schedule your consultation.
+      </span>
+    </span>
   );
 }
 export function CalendlyCTA() {
@@ -108,14 +113,19 @@ export function AdvisorPortrait({ compact = false }: { compact?: boolean }) {
     <figure className={`advisor-portrait ${compact ? "compact" : ""}`}>
       <div className="advisor-image">
         <Image
-          src={site.images.steven}
-          alt="Steven Rybacki, pictured on the agency’s current website"
+          src={
+            compact
+              ? site.images.stevenSarahBrick
+              : site.images.stevenSarahOffice
+          }
+          alt="Illustrated portrait of Steven and Sarah Rybacki"
           fill
           sizes="(max-width:600px) 85vw, (max-width:1400px) 45vw, 640px"
         />
       </div>
       <figcaption>
-        Steven Rybacki <span>Your Tyler-based insurance advisor</span>
+        Steven and Sarah Rybacki
+        <span>Agency-provided AI portrait</span>
       </figcaption>
     </figure>
   );

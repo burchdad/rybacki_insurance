@@ -110,3 +110,46 @@ describe("October client review copy", () => {
     expect(html.match(/<blockquote>/g)).toHaveLength(1);
   });
 });
+
+describe("November launch review refinements", () => {
+  it("explains the intake and booking order beside the quote button", () => {
+    const html = renderToStaticMarkup(createElement(ReviewCTA));
+    expect(html).toContain(
+      "Complete the questionnaire, then schedule your consultation.",
+    );
+    expect(html).toContain('href="/coverage-review"');
+    expect(html).not.toContain("calendly.com");
+  });
+  it("identifies supplied portraits honestly without inventing customer scenes", async () => {
+    const html = renderToStaticMarkup(
+      await ContentPage({
+        params: Promise.resolve({ slug: "about-steven-rybacki" }),
+      }),
+    );
+    expect(html).toContain("Steven and Sarah Rybacki");
+    expect(html).toContain("Agency-provided AI portrait");
+    expect(html).toContain("steven-sarah-brick.jpg");
+    expect(html).not.toContain("Illustrative_Client");
+  });
+  it("retains a single attributed review without placeholder ratings language", async () => {
+    const html = renderToStaticMarkup(
+      await ContentPage({ params: Promise.resolve({ slug: "reviews" }) }),
+    );
+    expect(html.match(/<blockquote>/g)).toHaveLength(1);
+    expect(html).not.toContain(
+      "No independent rating or review count is claimed",
+    );
+    expect(html).toContain("Individual experiences vary");
+    expect(html).not.toContain("aggregateRating");
+  });
+  it("keeps Steven involved while preserving Marketplace referral boundaries", () => {
+    expect(site.marketplaceReferral).toContain(
+      "Steven helps you understand your options",
+    );
+    expect(site.marketplaceReferral).toContain("coordinates referrals");
+    expect(site.marketplaceReferral).toContain("Matt Jubie and Gary Morazzano");
+    expect(site.marketplaceReferral).toContain(
+      "rather than directly issued or serviced",
+    );
+  });
+});

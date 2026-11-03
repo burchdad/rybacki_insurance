@@ -8,6 +8,8 @@ export const site = {
   images: {
     ocean: "/images/current-site-brand.png",
     steven: "/images/current-site-steven.png",
+    stevenSarahOffice: "/images/steven-sarah-office.jpg",
+    stevenSarahBrick: "/images/steven-sarah-brick.jpg",
   },
   phone: "(903) 941-7282",
   phoneHref: "tel:+19039417282",
@@ -33,7 +35,7 @@ export const site = {
   googleReview: "https://g.page/r/CUm5ik5bKFWHEBM/review",
   licensing: "Licensed in multiple states",
   marketplaceReferral:
-    "ACA Marketplace policies are handled through licensed referral partners Matt Jubie and Gary Morazzano, rather than directly issued or serviced by Steven Rybacki.",
+    "Steven helps you understand your options and coordinates referrals for ACA Marketplace coverage. Marketplace policies are handled through licensed referral partners Matt Jubie and Gary Morazzano, rather than directly issued or serviced by Steven Rybacki.",
   medicareReferral:
     "Steven Rybacki is not Medicare-licensed and does not directly sell Medicare policies. With your permission, Medicare inquiries can be referred to an appropriately licensed agent.",
   socials: [] as { label: string; href: string }[], // Add only verified agency profiles.
@@ -82,4 +84,4 @@ export const testimonials = [
   },
 ];
 export const reviewDisclaimer =
-  "Individual experiences vary and do not guarantee future results, eligibility or savings. This excerpt preserves the reviewer’s original wording. No independent rating or review count is claimed.";
+  "Individual experiences vary and do not guarantee future results, eligibility or savings.";
